@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<title>Pediatric Medicine - Anemia 📚 | The Coding Nurse (𝒜ℳℋ)🩺💉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root[data-theme="light"] {
+  --primary: #0f4c81;
+  --secondary: #0ea5e9;
+  --success: #22c55e;
+  --danger: #dc2626;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --soft: #f8fafc;
+  --text: #0f172a;
+  --border: #e5e7eb;
+  --shadow: rgba(0,0,0,.06);
+}
+:root[data-theme="dark"] {
+  --primary: #38bdf8;
+  --secondary: #0ea5e9;
+  --success: #4ade80;
+  --danger: #f87171;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --soft: #0f172a;
+  --text: #f8fafc;
+  --border: #334155;
+  --shadow: rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box; font-family:"Segoe UI", system-ui, sans-serif; transition: background 0.3s, color 0.3s;}
+body{margin:0; background:var(--bg); color:var(--text)}
+.container{max-width:1000px; margin:auto; padding:16px; position: relative;}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: -36px;
+  margin-bottom: 26px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.settings-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.setting-btn, .theme-toggle {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text);
+  box-shadow: 0 4px 12px var(--shadow);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.shake-anim { animation: shake 0.3s ease-in-out; }
+
+.hero{
+  text-align:center;
+  padding:40px 20px 50px 20px;
+  border-radius:24px;
+  background: linear-gradient(135deg, #0f4c81, #0ea5e9);
+  color:#fff;
+  margin-bottom: 20px;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 25px rgba(15, 76, 129, 0.2);
+}
+.hero h1{margin:0; font-size:34px; font-weight:800}
+.hero h2{ margin-top:6px; font-size:18px; letter-spacing:2px; text-transform:uppercase; color:#bbf7d0;}
+
+.mid-nav{ display:flex; gap:10px; margin:24px 0; padding:6px 4px; overflow-x:auto;}
+.q-btn{
+  min-width:44px; padding:10px 0; border-radius:12px; border:2px solid var(--border);
+  background:var(--card-bg); color: var(--text); font-weight:700; cursor:pointer; transition: all 0.2s ease;
+}
+.q-btn.active{background:#dbeafe; border-color:var(--secondary); color:#0f4c81; transform: scale(1.1); box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);}
+.q-btn.correct{background:#dcfce7 !important; border-color:var(--success) !important; color: #16a34a !important;}
+.q-btn.wrong{background:#fee2e2 !important; border-color:var(--danger) !important; color: #dc2626 !important;}
+.q-btn.flagged{border-color: #f59e0b !important; background: #fef3c7 !important; color: #b45309 !important;}
+.q-btn.answered-exam { background: #e2e8f0; border-color: #94a3b8; color: #475569; }
+
+.card{
+  background:var(--card-bg); border-radius:22px; padding:28px;
+  box-shadow:0 14px 35px var(--shadow); text-align: center;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--border);
+}
+
+.salawat-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.salawat-card-badge {
+  background: linear-gradient(135deg, rgba(15, 76, 129, 0.08), rgba(14, 165, 233, 0.08));
+  border: 2px dashed var(--primary);
+  color: var(--text);
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px var(--shadow);
+  animation: pulseGlow 2.5s infinite alternate;
+}
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 4px 15px var(--shadow); }
+  100% { transform: scale(1.03); box-shadow: 0 6px 22px rgba(14, 165, 233, 0.25); }
+}
+:root[data-theme="dark"] .salawat-card-badge {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(14, 165, 233, 0.12));
+}
+
+.chapter-badge-box {
+  background: var(--soft);
+  border: 2px solid var(--border);
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 12px var(--shadow);
+  text-align: center;
+}
+
+.mode-selector {
+ margin: 10px 0 25px 0;
+ display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--soft);
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  width: 100%;
+  max-width: 450px;
+  text-align: right;
+  direction: rtl;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.mode-option input { scale: 1.3; cursor: pointer; margin-left: 10px; }
+.mode-option:hover { border-color: var(--secondary); }
+.mode-option:has(input:checked) {
+  border-color: var(--secondary);
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.start-btn {
+  padding: 16px 50px; font-size: 18px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, var(--success), #16a34a); border: none; border-radius: 16px;
+  cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 450px;
+  display: block; margin: 10px auto;
+}
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35); }
+
+.resume-btn {
+  padding: 14px 30px; font-size: 16px; font-weight: 700; color: var(--primary);
+  background: transparent; border: 2px solid var(--primary); border-radius: 16px;
+  cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 450px;
+  display: none; margin: 12px auto;
+}
+.resume-btn:hover { background: var(--primary); color: #fff; }
+
+.timer-box {
+  display: none;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  color: var(--danger);
+  box-shadow: 0 4px 12px var(--shadow);
+  text-align: center;
+  margin: 10px auto 20px auto;
+  width: fit-content;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.progress{ height:10px; background:var(--border); border-radius:999px; overflow:hidden; margin-bottom:18px;}
+.progress span{
+  display:block; height:100%; width:0%;
+  background:linear-gradient(90deg, var(--secondary), var(--success));
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.question-box{
+  background: var(--soft);
+  border-left:6px solid var(--secondary); border-radius:18px; padding:22px; text-align: left;
+}
+
+.q-tools-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.q-badge {
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.q-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.question { font-size:19px; font-weight:600; line-height: 1.5; width: 100%; display: block; word-wrap: break-word; }
+
+.kw-highlight {
+  background-color: #fef08a;
+  color: #854d0e;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: #ca8a04;
+  text-decoration-thickness: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+:root[data-theme="dark"] .kw-highlight {
+  background-color: #713f12;
+  color: #fef08a;
+  text-decoration-color: #eab308;
+}
+
+#speakBtn, #stopSpeakBtn, #translateBtn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.2s; }
+#speakBtn:hover, #stopSpeakBtn:hover, #translateBtn:hover { transform: scale(1.2); }
+
+#flagBtn { background: none; border: none; font-size: 22px; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.2s; filter: grayscale(1); }
+#flagBtn:hover { transform: scale(1.2); }
+#flagBtn.active { filter: grayscale(0) drop-shadow(0 0 4px #f59e0b) !important; transform: scale(1.1); }
+
+.translation-box {
+  display: none;
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--card-bg);
+  border-right: 4px solid var(--secondary);
+  border-radius: 12px;
+  direction: rtl;
+  text-align: right;
+  box-shadow: inset 0 2px 6px var(--shadow), 0 2px 8px var(--shadow);
+  animation: popIn 0.3s ease;
+}
+.trans-title { font-weight: bold; color: var(--secondary); margin-bottom: 8px; font-size: 14px; }
+.trans-q { font-size: 16px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; color: var(--text); }
+.trans-o-list { margin: 0; padding-right: 20px; font-size: 15px; color: #475569; line-height: 1.7; }
+
+.options button{
+  width:100%; padding:16px; margin-bottom:12px; border-radius:14px;
+  border:2px solid var(--border); background:var(--card-bg); color: var(--text);
+  font-size:16px; text-align: left; cursor:pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.options button:not(:disabled):hover {
+  transform: translateY(-2px); border-color: var(--secondary);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.15);
+}
+.options button.correct{background:#ecfdf5 !important; border-color:var(--success) !important; color: #065f46 !important; font-weight: 700;}
+.options button.wrong{background:#fef2f2 !important; border-color:var(--danger) !important; color: #991b1b !important; font-weight: 700;}
+.options button.selected-exam { background: #e0f2fe !important; border-color: var(--secondary) !important; color: #0369a1 !important; font-weight: 700; }
+
+.nav{ display:flex; gap:12px; margin-top:26px;}
+.nav button{
+  flex:1; padding:14px; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer; transition: all 0.2s;
+}
+.prev{background:var(--card-bg); border:2px solid var(--border); color: var(--text);}
+.prev:hover{background: var(--soft); transform: translateY(-1px);}
+.next{ border:none; color:#fff; background:linear-gradient(135deg,var(--primary),var(--secondary));}
+.next:hover{opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);}
+
+.extra-nav { display: flex; gap: 12px; margin-top: 12px; }
+.extra-nav button { flex: 1; padding: 12px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.home-btn { background: var(--card-bg); border: 2px solid var(--border); color: var(--text); }
+.home-btn:hover { background: var(--soft); transform: translateY(-1px); }
+.finish-btn { background: linear-gradient(135deg, var(--danger), #b91c1c); border: none; color: #fff; }
+.finish-btn:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2); }
+
+.result-msg { font-size: 18px; margin-bottom: 10px; line-height: 1.6; }
+.duck-msg { display: block; margin-top: 15px; font-weight: 800; color: var(--primary); font-size: 20px;}
+.stats-container {
+  display: flex; justify-content: space-around; background: var(--soft);
+  padding: 16px; border-radius: 16px; margin: 20px 0; border: 1px solid var(--border);
+}
+.stat-box { text-align: center; }
+.stat-val { font-size: 24px; font-weight: 800; }
+.stat-lbl { font-size: 13px; color: #64748b; margin-top: 4px; }
+.score{ font-size:48px; font-weight:900; color:var(--success); margin: 10px 0; text-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);}
+.badge-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.result-actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 20px auto 0 auto;
+}
+.restart{
+  padding:14px 28px; border:none; border-radius:16px; font-size:16px; font-weight:700;
+  cursor:pointer; color:#fff; background:linear-gradient(135deg,#0f4c81,#0ea5e9); transition: all 0.2s;
+  width: 100%;
+}
+.restart:hover{transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15, 76, 129, 0.35);}
+
+.review-btn {
+  padding: 14px 28px; border: 2px solid var(--success); border-radius: 16px; font-size: 16px; font-weight: 700;
+  cursor: pointer; color: var(--success); background: transparent; transition: all 0.2s;
+  width: 100%; display: none;
+}
+.review-btn:hover { background: var(--success); color: #fff; transform: translateY(-2px); }
+
+.download-btn {
+  padding: 14px 28px; border: 2px solid var(--primary); border-radius: 16px; font-size: 16px; font-weight: 700;
+  cursor: pointer; color: var(--primary); background: transparent; transition: all 0.2s;
+  width: 100%;
+}
+.download-btn:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="hero">
+        <h1>Pediatric Medicine 🩺</h1>
+        <h2>Anemia in Childhood (Midterm)</h2>
+        <p>Prepared by <strong>The Coding Nurse (𝒜ℳℋ)🩺💉</strong></p>
+    </div>
+
+    <div class="top-bar">
+        <div class="settings-bar">
+            <button class="setting-btn" id="soundToggle" onclick="toggleSound()"><span>🔊</span> Sound On</button>
+            <button class="setting-btn" id="vibeToggle" onclick="toggleVibration()"><span>📳</span> Vibe On</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()"><span>🌓</span> Dark Mode</button>
+    </div>
+
+    <div class="card" id="startCard">
+        
+        <div class="salawat-wrapper">
+            <div class="salawat-card-badge">✨ صلي علي النبي 🤍🐣✨</div>
+        </div>
+        
+        <div class="chapter-badge-box">
+            📚 1. Anemia in Childhood
+        </div>
+
+        <div id="highScoreView" style="display:none; font-weight:bold; margin:0 auto 16px auto; color:var(--success); font-size:14px; background:rgba(34, 197, 94, 0.08); padding:8px 16px; border-radius:50px; border:1px dashed var(--success); width:fit-content; direction:rtl;">
+            🏆 أعلى سكور: <span id="highScoreVal">0%</span>
+        </div>
+
+        <div class="mode-selector">
+            <label class="mode-option">
+                <input type="radio" name="quizMode" value="sequential" onchange="setMode('sequential')">
+                <span>🔢 وضع الترتيب (أسئلة واختيارات مرتبة بدون عشوائية)</span>
+            </label>
+            <label class="mode-option">
+                <input type="radio" name="quizMode" value="study" onchange="setMode('study')">
+                <span>📖 وضع المذاكرة (عشوائي + تصحيح فوري للمعلومات)</span>
+            </label>
+            <label class="mode-option">
+                <input type="radio" name="quizMode" value="memorize" onchange="setMode('memorize')">
+                <span>🧠 وضع البصمجة (كشف الإجابة الصحيحه للمراجعه)</span>
+            </label>
+            <label class="mode-option">
+                <input type="radio" name="quizMode" value="exam" onchange="setMode('exam')">
+                <span>⏳ وضع الامتحان (عشوائي + تايمر وبدون كشف الإجابات)</span>
+            </label>
+            <label class="mode-option">
+                <input type="radio" name="quizMode" value="bookmark" onchange="setMode('bookmark')">
+                <span>🔖 مراجعة الأسئلة المميزة فقط</span>
+            </label>
+        </div>
+
+        <button class="start-btn" onclick="startQuiz()">Start 🚀</button>
+        <button class="resume-btn" id="resumeBtn" onclick="resumeQuiz()">استكمال محاولة الحل السابقة 🔄</button>
+    </div>
+
+    <div id="quizContainer" style="display:none">
+        <div class="timer-box" id="timerBox">⏳ المتبقي: <span id="timerDisplay">00:00</span></div>
+        <div class="mid-nav" id="midNav"></div>
+        <div class="card" id="quizCard">
+            <div class="progress"><span id="progressBar"></span></div>
+            <div class="question-box">
+                
+                <div class="q-tools-bar">
+                    <span class="q-badge" id="qIndexBadge">Question</span>
+                    <div class="q-actions">
+                        <button id="translateBtn" onclick="toggleTranslation()" title="ترجمة السؤال للعربية" style="display:none;">🌍</button>
+                        <button id="speakBtn" onclick="speakQuestion()" title="بدء النطق من أول وجديد">🔊</button>
+                        <button id="stopSpeakBtn" onclick="toggleSpeechPause()" title="إيقاف مؤقت" style="display:none;">⏸️</button>
+                        <button id="flagBtn" onclick="toggleFlag()" title="Bookmark Question">🔖</button>
+                    </div>
+                </div>
+
+                <div class="question" id="question"></div>
+                
+                <div class="translation-box" id="translationBox">
+                    <div class="trans-title">🎯 الترجمة العربية:</div>
+                    <div class="trans-q" id="transQText"></div>
+                    <ul class="trans-o-list" id="transOList"></ul>
+                </div>
+
+                <div class="options" id="options" style="margin-top: 20px;"></div>
+            </div>
+            
+            <div class="nav">
+                <button class="prev" onclick="prevQ()">⬅ Previous</button>
+                <button class="next" onclick="nextQ()">Next ➡</button>
+            </div>
+            
+            <div class="extra-nav">
+                <button class="home-btn" onclick="goToHome()">🏠 الرئيسية (حفظ)</button>
+                <button class="finish-btn" onclick="showResult()">📊 إنهاء وعرض النتيجة</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card result" id="resultCard" style="display:none">
+        <div class="result-msg" style="color: var(--primary); font-weight: bold;">✨🤍 صلي علي النبي ✨ </div>
+        <div class="result-msg">
+            متزعلش لو نتيجة حلك مكنتش أحسن حاجه خليك ديما فاكر ان لسه فيه فرصه تحاول سمي الله وحاول تاني
+            <span class="duck-msg">( 🐥 أشطر كتكوت يخواشي )</span>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-val" id="statCorrect" style="color: var(--success);">0</div>
+                <div class="stat-lbl">Correct ✅</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="statWrong" style="color: var(--danger);">0</div>
+                <div class="stat-lbl">Wrong ❌</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="statRatio" style="color: var(--secondary);">0%</div>
+                <div class="stat-lbl">Accuracy 🎯</div>
+            </div>
+        </div>
+
+        <h2>Final Result</h2>
+        <div class="score" id="scoreText"></div>
+        <div class="badge-title" id="badgeTitle"></div>
+        
+        <div class="result-actions-container">
+            <button class="review-btn" id="reviewBtn" onclick="startReview()">🔁 مراجعة الأخطاء فقط</button>
+            <button class="download-btn" id="downloadBtn" onclick="downloadResultCard()">📸 تحميل النتيجة كصورة</button>
+            <button class="restart" onclick="restartQuiz()">🔄 Restart Quiz</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+const datasets = {
+  "place1": [
+    // --- MCQs (1 to 70) ---
+    {
+      q: "What is the standard definition of anemia in infants and children?",
+      o: [
+        "Decreased RBC mass and/or hemoglobin below age-matched controls",
+        "Total elevation of serum iron and ferritin levels",
+        "Prolonged red blood cell lifespan exceeding 120 days",
+        "Complete absence of reticulocytes in circulation"
+      ],
+      a: 0,
+      trQ: "ما هو التعريف القياسي للأنيميا عند الرضع والأطفال؟",
+      trO: [
+        "انخفاض كتلة خلايا الدم الحمراء و/أو الهيموجلوبين تحت المعدلات الطبيعية للعمر",
+        "ارتفاع شامل في مستويات حديد وفريتين السيروم",
+        "طول عمر كرات الدم الحمراء لأكثر من 120 يوماً",
+        "غياب تام للخلايا الشبكية في الدورة الدموية"
+      ]
+    },
+    {
+      q: "What is the normal lifespan of mature circulating red blood cells?",
+      o: [
+        "60 days",
+        "90 days",
+        "120 days",
+        "180 days"
+      ],
+      a: 2,
+      trQ: "ما هو العمر الافتراضي الطبيعي لكرات الدم الحمراء الناضجة في الدورة الدموية؟",
+      trO: [
+        "60 يوماً",
+        "90 يوماً",
+        "120 يوماً",
+        "180 يوماً"
+      ]
+    },
+    {
+      q: "Which classification category of anemia is based on red blood cell morphology (MCV, MCH, RDW)?",
+      o: [
+        "Depending on etiology",
+        "Depending on morphology",
+        "Depending on bone marrow cellularity",
+        "Depending on clinical symptoms"
+      ],
+      a: 1,
+      trQ: "أي تصنيف للأنيميا يعتمد على مورفولوجيا كرات الدم الحمراء (الحجم، الهيموجلوبين، وتوزيع الحجم)؟",
+      trO: [
+        "اعتماداً على المسببات",
+        "اعتماداً على المورفولوجيا (الشكل والحجم)",
+        "اعتماداً على خلايا نخاع العظم",
+        "اعتماداً على الأعراض السريرية"
+      ]
+    },
+    {
+      q: "Which type of anemia is classified under microcytic anemias?",
+      o: [
+        "Normocytic anemia",
+        "Macrocytic anemia",
+        "Iron deficiency anemia",
+        "Aplastic anemia"
+      ],
+      a: 2,
+      trQ: "أي نوع من أنواع الأنيميا يُصنف ضمن فقر الدم صغروي الخلايا (Microcytic)؟",
+      trO: [
+        "فقر الدم سوي الخلايا",
+        "فقر الدم كبير الخلايا",
+        "أنيميا نقص الحديد",
+        "الأنيميا اللاتنسجية"
+      ]
+    },
+    {
+      q: "What is the most common cause of anemia in pediatric patients overall?",
+      o: [
+        "Beta-Thalassemia major",
+        "Iron deficiency anemia",
+        "G6PD deficiency",
+        "Hereditary Spherocytosis"
+      ],
+      a: 1,
+      trQ: "ما هو السبب الأكثر شيوعاً للأنيميا عند الأطفال بشكل عام؟",
+      trO: [
+        "الثلاسيميا الكبرى",
+        "أنيميا نقص الحديد",
+        "نقص إنزيم G6PD",
+        "كروية الدم الوراثية"
+      ]
+    },
+    {
+      q: "At what age range is iron deficiency anemia most commonly observed?",
+      o: [
+        "1 to 3 months",
+        "6 to 24 months",
+        "5 to 7 years",
+        "Adolescence only"
+      ],
+      a: 1,
+      trQ: "في أي الفئات العمرية تلاحظ أنيميا نقص الحديد بشكل أكثر شيوعاً؟",
+      trO: [
+        "من 1 إلى 3 أشهر",
+        "من 6 إلى 24 شهراً",
+        "من 5 إلى 7 سنوات",
+        "المراهقة فقط"
+      ]
+    },
+    {
+      q: "When may iron deficiency occur earlier than 6 months of age in infants?",
+      o: [
+        "Exclusive breastfeeding for 3 months",
+        "Reduced birth iron stores due to prematurity or twins",
+        "High dietary intake of vitamin C",
+        "Normal full-term delivery without complications"
+      ],
+      a: 1,
+      trQ: "متى قد تحدث أنيميا نقص الحديد في عمر أبكر من 6 أشهر عند الرضع؟",
+      trO: [
+        "الرضاعة الطبيعية الخالصة لمدة 3 أشهر",
+        "انخفاض مخزون الحديد عند الولادة بسبب الولادة المبكرة أو التوائم",
+        "تناول كميات كبيرة من فيتامين C في الغذاء",
+        "الولادة الطبيعية كاملة الترم بدون مضاعفات"
+      ]
+    },
+    {
+      q: "Which physical sign is considered one of the primary symptoms during examination for anemia?",
+      o: [
+        "Hypertension",
+        "Pallor",
+        "Hyperactivity",
+        "Normal skin coloration"
+      ],
+      a: 1,
+      trQ: "أي علامة جسدية تُعتبر من الأعراض الأساسية عند فحص الأنيميا؟",
+      trO: [
+        "ارتفاع ضغط الدم",
+        "الشحوب",
+        "فرط الحركة",
+        "لون الجلد الطبيعي"
+      ]
+    },
+    {
+      q: "What cardiovascular sign may appear in severe anemia due to increased cardiac output?",
+      o: [
+        "Systolic ejection murmur",
+        "Bradycardia",
+        "Diastolic arrest",
+        "Valvular stenosis"
+      ],
+      a: 0,
+      trQ: "ما هي العلامة القلبية التي قد تظهر في الأنيميا الشديدة بسبب زيادة النتاج القلبي؟",
+      trO: [
+        "لغط قذفي انقباضي",
+        "بطء القلب",
+        "توقف انبساطي",
+        "تضيق الصمام"
+      ]
+    },
+    {
+      q: "What is the recommended dose of elemental iron for treating iron deficiency anemia in children?",
+      o: [
+        "1 mg/kg/day",
+        "3 to 6 mg/kg/day",
+        "15 to 20 mg/kg/day",
+        "50 mg/kg/day"
+      ],
+      a: 1,
+      trQ: "ما هي الجرعة الموصى بها من الحديد العنصري لعلاج أنيميا نقص الحديد عند الأطفال؟",
+      trO: [
+        "1 ملغ / كغ / يوم",
+        "3 إلى 6 ملغ / كغ / يوم",
+        "15 إلى 20 ملغ / كغ / يوم",
+        "50 ملغ / كغ / يوم"
+      ]
+    },
+    {
+      q: "For how long should oral iron supplementation be continued after hemoglobin levels normalize?",
+      o: [
+        "2 days",
+        "1 week",
+        "At least 3 months",
+        "1 year"
+      ],
+      a: 2,
+      trQ: "لأي مدة يجب الاستمرار في مكملات الحديد الفموية بعد عودة مستويات الهيموجلوبين إلى وضعها الطبيعي؟",
+      trO: [
+        "يومان",
+        "أسبوع واحد",
+        "3 أشهر على الأقل",
+        "سنة واحدة"
+      ]
+    },
+    {
+      q: "When should the reticulocyte count be checked to monitor response to iron therapy?",
+      o: [
+        "After 2 weeks",
+        "After 2 months",
+        "After 6 months",
+        "After 1 year"
+      ],
+      a: 0,
+      trQ: "متى يجب فحص عدد الخلايا الشبكية لمراقبة الاستجابة لعلاج الحديد؟",
+      trO: [
+        "بعد أسبوعين",
+        "بعد شهرين",
+        "بعد 6 أشهر",
+        "بعد سنة واحدة"
+      ]
+    },
+    {
+      q: "What is the ultimate goal of iron therapy in deficiency anemia?",
+      o: [
+        "To replace circulating hemoglobin only",
+        "To replace iron stores, not just circulating hemoglobin",
+        "To lower serum ferritin immediately",
+        "To stop red blood cell destruction completely"
+      ],
+      a: 1,
+      trQ: "ما هو الهدف النهائي للعلاج بالحديد في أنيميا النقص؟",
+      trO: [
+        "استبدال هيموجلوبين الدورة الدموية فقط",
+        "استبدال مخزون الحديد وليس فقط هيموجلوبين الدورة الدموية",
+        "خفض فيريتين السيروم فوراً",
+        "إيقاف تدمير كرات الدم الحمراء تماماً"
+      ]
+    },
+    {
+      q: "Hereditary Spherocytosis is usually the result of a partial deficiency of which red cell membrane protein?",
+      o: [
+        "Hemoglobin S",
+        "Albumin",
+        "Spectrin",
+        "Fibrinogen"
+      ],
+      a: 2,
+      trQ: "تنتج كروية الدم الوراثية عادة عن نقص جزئي لأي بروتين من غشاء كرات الدم الحمراء؟",
+      trO: [
+        "هيموجلوبين S",
+        "الألبومين",
+        "السبكترين",
+        "الفيبرينوجين"
+      ]
+    },
+    {
+      q: "What percentage of children with Hereditary Spherocytosis may present with neonatal hyperbilirubinemia?",
+      o: [
+        "10%",
+        "25%",
+        "50%",
+        "90%"
+      ],
+      a: 2,
+      trQ: "ما هي النسبة المئوية للأطفال المصابين بكروية الدم الوراثية الذين قد يصابون بفرط بيليروبين الدم الوليدي؟",
+      trO: [
+        "10%",
+        "25%",
+        "50%",
+        "90%"
+      ]
+    },
+    {
+      q: "Why should splenectomy in severe Hereditary Spherocytosis be postponed until at least 5 years of age?",
+      o: [
+        "To prevent growth retardation",
+        "Because of the greater risk of postsplenectomy sepsis prior to this age",
+        "Because the spleen regrows completely",
+        "To reach a target hemoglobin of 20 g/dL"
+      ],
+      a: 1,
+      trQ: "لماذا يُؤجل استئصال الطحال في حالات كروية الدم الوراثية الشديدة حتى سن 5 سنوات على الأقل؟",
+      trO: [
+        "لمنع تأخر النمو",
+        "بسبب الخطر الأكبر للإصابة بتسمم الدم بعد استئصال الطحال قبل هذا العمر",
+        "لأن الطحال ينمو مرة أخرى بالكامل",
+        "للوصول إلى هيموجلوبين مستهدف 20 جم/ديسيلتر"
+      ]
+    },
+    {
+      q: "What are the thalassemia disorders considered on a worldwide basis?",
+      o: [
+        "The rarest genetic disorders",
+        "The most common single-gene disorders worldwide",
+        "Autoimmune non-genetic conditions",
+        "Infectious bacterial diseases"
+      ],
+      a: 1,
+      trQ: "ما هو التصنيف العالمي لاضطرابات الثلاسيميا على نطاق واسع؟",
+      trO: [
+        "أندر الاضطرابات الوراثية",
+        "الاضطرابات الجينية الأحادية الأكثر شيوعاً في جميع أنحاء العالم",
+        "حالات مناعية ذاتية غير وراثية",
+        "أراض بكتيرية معدية"
+      ]
+    },
+    {
+      q: "What is the primary cellular mechanism causing ineffective erythropoiesis in thalassemias?",
+      o: [
+        "Globin chain imbalance causing maturation disruption",
+        "Complete absence of white blood cells",
+        "Excessive absorption of dietary vitamin C",
+        "Normal maturation without mutations"
+      ],
+      a: 0,
+      trQ: "ما هي الآلية الخلوية الأساسية المسببة لعدم كفاءة تكوين الدم في الثلاسيميا؟",
+      trO: [
+        "اختلال سلاسل الجلوبين مما يسبب اضطراب النضج",
+        "الغياب التام لخلايا الدم البيضاء",
+        "الامتصاص المفرط لفيتامين C الغذائي",
+        "النضج الطبيعي بدون طفرات"
+      ]
+    },
+    {
+      q: "What laboratory finding is characteristically elevated in Thalassemia Minor?",
+      o: [
+        "Decreased serum ferritin",
+        "Elevated level of hemoglobin A2",
+        "Absence of all red blood cells",
+        "Normal iron levels with macrocytosis"
+      ],
+      a: 1,
+      trQ: "ما هي النتيجة المخبرية التي ترتفع بشكل مميز في الثلاسيميا الصغرى؟",
+      trO: [
+        "انخفاض فيريتين السيروم",
+        "مستوى مرتفع من هيموجلوبين A2",
+        "غياب جميع خلايا الدم الحمراء",
+        "مستويات حديد طبيعية مع كبر الخلايا"
+      ]
+    },
+    {
+      q: "What clinical features are typically found in Beta-Thalassemia Major?",
+      o: [
+        "Mild asymptomatic presentation",
+        "Severe microcytic hypochromic anemia with marked hepatosplenomegaly",
+        "Macrocythemia with normal spleen size",
+        "Normal hemoglobin levels throughout life"
+      ],
+      a: 1,
+      trQ: "ما هي الملامح السريرية التي تظهر عادة في الثلاسيميا الكبرى؟",
+      trO: [
+        "عرض خفيف بدون أعراض",
+        "أنيميا صغروية ناقصة الصباغ شديدة مع تضخم ملحوظ في الكبد والطحال",
+        "كثرة الخلايا الكبيرة مع حجم طحال طبيعي",
+        "مستويات هيموجلوبين طبيعية طوال الحياة"
+      ]
+    },
+    {
+      q: "What type of inheritance pattern is associated with G6PD deficiency?",
+      o: [
+        "Autosomal dominant",
+        "X-linked recessive",
+        "Autosomal recessive",
+        "Mitochondrial inheritance"
+      ],
+      a: 1,
+      trQ: "ما هو نمط الوراثة المرتبط بنقص إنزيم G6PD؟",
+      trO: [
+        "جسمي سائد",
+        "مرتبط بالكروموسوم X التنحي",
+        "جسمي متنحي",
+        "وراثة ميتوكوندريا"
+      ]
+    },
+    {
+      q: "What is the primary function of G6PD enzyme inside the red blood cell?",
+      o: [
+        "To produce oxygen for the lungs",
+        "To protect RBCs against oxidative injury",
+        "To destroy white blood cells",
+        "To transport iron across the intestinal wall"
+      ],
+      a: 1,
+      trQ: "ما هي الوظيفة الأساسية لإنزيم G6PD داخل خلية الدم الحمراء؟",
+      trO: [
+        "إنتاج الأكسجين للرئتين",
+        "حماية كرات الدم الحمراء ضد الإصابة التأكسدية",
+        "تدمير خلايا الدم البيضاء",
+        "نقل الحديد عبر جدار الأمعاء"
+      ]
+    },
+    {
+      q: "What can trigger acute hemolysis in a patient with G6PD deficiency?",
+      o: [
+        "Ingestion of oxidant drugs or fava beans, or infection",
+        "Eating large amounts of green vegetables",
+        "High levels of daily exercise",
+        "Drinking cold water"
+      ],
+      a: 0,
+      trQ: "ما الذي يمكن أن يثير انحلال الدم الحاد لدى المريض الذي يعاني من نقص G6PD؟",
+      trO: [
+        "تناول الأدوية المؤكسدة أو الفول أو الإصابة بالعدوى",
+        "تناول كميات كبيرة من الخضار",
+        "مستويات عالية من التمارين اليومية",
+        "شرب الماء البارد"
+      ]
+    },
+    {
+      q: "How is the definitive diagnosis of G6PD deficiency confirmed?",
+      o: [
+        "By finding elevated levels of G6PD in plasma",
+        "By the finding of reduced levels of G6PD in erythrocytes",
+        "By performing a bone marrow biopsy",
+        "By measuring total iron-binding capacity"
+      ],
+      a: 1,
+      trQ: "كيف يتم تأكيد التشخيص النهائي لنقص إنزيم G6PD؟",
+      trO: [
+        "من خلال إيجاد مستويات مرتفعة من G6PD في البلازما",
+        "من خلال العثور على مستويات منخفضة من G6PD في كريات الدم الحمراء",
+        "عن طريق إجراء خزعة نخاع العظم",
+        "عن طريق قياس السعة الكلية الرابطة للحديد"
+      ]
+    },
+    {
+      q: "What is the most important treatment principle for G6PD deficiency?",
+      o: [
+        "Regular blood transfusions",
+        "Avoidance of drugs and foods known to be associated with hemolysis",
+        "High-dose iron supplementation",
+        "Immediate surgical removal of the spleen"
+      ],
+      a: 1,
+      trQ: "ما هو مبدأ العلاج الأهم لنقص G6PD؟",
+      trO: [
+        "عمل عمليات نقل دم منتظمة",
+        "تجنب الأدوية والأطعمة المعروف ارتباطها بانحلال الدم",
+        "مكملات الحديد بجرعات عالية",
+        "الإزالة الجراحية الفورية للطحال"
+      ]
+    },
+    {
+      q: "Which test evaluates red blood cell size distribution width?",
+      o: [
+        "MCV",
+        "RDW",
+        "WBC count",
+        "Platelet count"
+      ],
+      a: 1,
+      trQ: "أي اختبار يقيّم عرض توزيع حجم كرات الدم الحمراء؟",
+      trO: [
+        "الحجم الكروي الوسطي",
+        "عرض توزيع حجم الدم (RDW)",
+        "عداد خلايا الدم البيضاء",
+        "عداد الصفائح الدموية"
+      ]
+    },
+    {
+      q: "What parameter measures the average volume of a single red blood cell?",
+      o: [
+        "MCV",
+        "MCH",
+        "Serum Ferritin",
+        "Reticulocyte count"
+      ],
+      a: 0,
+      trQ: "ما هو المعيار الذي يقيس متوسط حجم خلية دم حمراء واحدة؟",
+      trO: [
+        "الحجم الكروي الوسطي (MCV)",
+        "الهيموجلوبين الكروي الوسطي",
+        "فيريتين الدم",
+        "عدد الخلايا الشبكية"
+      ]
+    },
+    {
+      q: "What type of anemia is characterized by MCV below normal limits?",
+      o: [
+        "Iron deficiency anemia",
+        "Aplastic anemia",
+        "Folate deficiency anemia",
+        "Hemolytic crisis"
+      ],
+      a: 0,
+      trQ: "ما هو نوع الأنيميا الذي يتميز بانخفاض الحجم الكروي الوسطي عن الحد الطبيعي؟",
+      trO: [
+        "أنيميا نقص الحديد",
+        "الأنيميا اللاتنسجية",
+        "أنيميا نقص الفولات",
+        "نوبة انحلال الدم"
+      ]
+    },
+    {
+      q: "What laboratory parameter reflects the amount of stored iron in the body?",
+      o: [
+        "Serum ferritin",
+        "Hemoglobin level",
+        "Platelet count",
+        "White blood cell count"
+      ],
+      a: 0,
+      trQ: "ما هو المعيار المخبري الذي يعكس كمية الحديد المخزن في الجسم؟",
+      trO: [
+        "فيريتين السيروم",
+        "مستوى الهيموجلوبين",
+        "عدد الصفائح الدموية",
+        "عداد خلايا الدم البيضاء"
+      ]
+    },
+    {
+      q: "What happens to Total Iron-Binding Capacity (TIBC) in iron deficiency anemia?",
+      o: [
+        "It decreases significantly",
+        "It increases",
+        "It remains completely unchanged",
+        "It drops to zero"
+      ],
+      a: 1,
+      trQ: "ما الذي يحدث للسعة الكلية الرابطة للحديد في أنيميا نقص الحديد؟",
+      trO: [
+        "تنخفض بشكل ملحوظ",
+        "تزداد",
+        "تبقى دون تغيير تماماً",
+        "تنخفض إلى الصفر"
+      ]
+    },
+    {
+      q: "In Beta-Thalassemia major, what specific hemoglobin fraction is typically elevated on electrophoresis after infancy?",
+      o: [
+        "Hemoglobin A",
+        "Hemoglobin F and A2",
+        "Hemoglobin H exclusively",
+        "Hemoglobin Bart's"
+      ],
+      a: 1,
+      trQ: "في الثلاسيميا الكبرى، ما هو جزء الهيموجلوبين المحدد الذي يرتفع عادة في الفصل الكهربائي بعد الرضاعة؟",
+      trO: [
+        "هيموجلوبين A",
+        "هيموجلوبين F و A2",
+        "هيموجلوبين H حصراً",
+        "هيموجلوبين بارت"
+      ]
+    },
+    {
+      q: "Which specific cell shape is characteristically seen on the peripheral blood smear of Hereditary Spherocytosis?",
+      o: [
+        "Target cells",
+        "Spherocytes",
+        "Sickle cells",
+        "Schistocytes"
+      ],
+      a: 1,
+      trQ: "ما هو شكل الخلية المحدد الذي يظهر بشكل مميز على مسحة الدم المحيطي في كروية الدم الوراثية؟",
+      trO: [
+        "الخلايا المستهدفة",
+        "الخلايا الكروية",
+        "الخلايا المنجلية",
+        "خلايا شيزوستوسيت"
+      ]
+    },
+    {
+      q: "What test measures red blood cell lysis resistance in hypotonic saline solutions for Hereditary Spherocytosis?",
+      o: [
+        "Osmotic fragility test",
+        "Hemoglobin electrophoresis",
+        "Serum ferritin assay",
+        "Coomb's test"
+      ],
+      a: 0,
+      trQ: "ما هو الاختبار الذي يقيس مقاومة كرات الدم الحمراء للتحلل في محلول ملحي منخفض التوتر في كروية الدم الوراثية؟",
+      trO: [
+        "اختبار الهشاشة الأسموزية",
+        "فصل الهيموجلوبين الكهربائي",
+        "مقاييس فيريتين الدم",
+        "اختبار كومبس"
+      ]
+    },
+    {
+      q: "What nutritional support is given to patients with chronic hemolytic anemias to prevent hypoplasia?",
+      o: [
+        "Folic acid",
+        "Vitamin D",
+        "Calcium carbonate",
+        "Vitamin C drops"
+      ],
+      a: 0,
+      trQ: "ما هو الدعم الغذائي الذي يتم إعطاؤه للمرضى الذين يعانون من فقر الدم الانحلالي المزمن لمنع قصور النخاع؟",
+      trO: [
+        "حمض الفوليك",
+        "فيتامين د",
+        "كربونات الكالسيوم",
+        "قطرات فيتامين C"
+      ]
+    },
+    {
+      q: "Which physical finding is very common in patients with chronic hemolytic anemias due to hyperbilirubinemia?",
+      o: [
+        "Jaundice",
+        "Cyanosis",
+        "Severe hypertension",
+        "Clubbing of fingers"
+      ],
+      a: 0,
+      trQ: "ما هي النتيجة الجسدية الشائعة جداً لدى المرضى الذين يعانون من فقر الدم الانحلالي المزمن بسبب فرط بيليروبين الدم؟",
+      trO: [
+        "اليرقان",
+        "الازرقاق",
+        "ارتفاع ضغط الدم الشديد",
+        "تعصيب الأصابع"
+      ]
+    },
+    {
+      q: "What does guaiac positive stool in a patient with iron deficiency anemia typically indicate?",
+      o: [
+        "Normal digestive function",
+        "Gastrointestinal blood loss or bleeding",
+        "Excessive iron absorption",
+        "Rapid red cell destruction"
+      ],
+      a: 1,
+      trQ: "ماذا يشير البراز الإيجابي لاختبار الغواياك لدى مريض يعاني من أنيميا نقص الحديد؟",
+      trO: [
+        "وظيفة هضمية طبيعية",
+        "فقدان الدم أو نزيف في الجهاز الهضمي",
+        "امتصاص مفرط للحديد",
+        "تدمير سريع لكرات الدم الحمراء"
+      ]
+    },
+    {
+      q: "Which clinical feature in the central nervous system is commonly associated with iron deficiency anemia in children?",
+      o: [
+        "Hyperactivity",
+        "Fatigue and irritability",
+        "Enhanced memory",
+        "Rapid reflex overactivity"
+      ],
+      a: 1,
+      trQ: "ما هي السمة السريرية في الجهاز العصبي المركزي المرتبطة عادة بأنيميا نقص الحديد لدى الأطفال؟",
+      trO: [
+        "فرط الحركة",
+        "الإرهاق والتهيج",
+        "تعزيز الذاكرة",
+        "فرط نشاط رد الفعل"
+      ]
+    },
+    {
+      q: "What musculoskeletal performance issue can be seen in severe anemia due to tissue hypoxia?",
+      o: [
+        "Impaired exercise performance",
+        "Increased muscle mass",
+        "Rapid bone elongation",
+        "Hyper-flexibility of joints"
+      ],
+      a: 0,
+      trQ: "ما هي مشكلة الأداء العضلي الهيكلي التي يمكن رؤيتها في الأنيميا الشديدة بسبب نقص الأكسجين في الأنسجة؟",
+      trO: [
+        "ضعف الأداء البدني أو ممارسة التمارين",
+        "زيادة كتلة العضلات",
+        "استطالة عظمية سريعة",
+        "مرونة فائقة للمفاصل"
+      ]
+    },
+    {
+      q: "How low can the hemoglobin level drop in severe cases of iron deficiency anemia?",
+      o: [
+        "15-16 g/dL",
+        "12-14 g/dL",
+        "3-4 g/dL",
+        "10-11 g/dL"
+      ],
+      a: 2,
+      trQ: "إلى أي مدى يمكن أن ينخفض مستوى الهيموجلوبين في الحالات الشديدة من أنيميا نقص الحديد؟",
+      trO: [
+        "15-16 جم/ديسيلتر",
+        "12-14 جم/ديسيلتر",
+        "3-4 جم/ديسيلتر",
+        "10-11 جم/ديسيلتر"
+      ]
+    },
+    {
+      q: "What is the typical finding of reticulocyte count in uncomplicated iron deficiency anemia?",
+      o: [
+        "Extremely elevated",
+        "Usually normal or low",
+        "Unmeasurable",
+        "Constantly fluctuating"
+      ],
+      a: 1,
+      trQ: "ما هي النتيجة النموذجية لعدد الخلايا الشبكية في أنيميا نقص الحديد غير المعقدة؟",
+      trO: [
+        "مرتفعة للغاية",
+        "عادة ما تكون طبيعية أو منخفضة",
+        "غير قابلة للقياس",
+        "تقلب باستمرار"
+      ]
+    },
+    {
+      q: "What is the status of leukocytes and platelets in uncomplicated iron deficiency anemia?",
+      o: [
+        "Leukocytes are normal, and platelets are often increased with normal morphology",
+        "Both are absent",
+        "Leukocytes are severely decreased",
+        "Both show massive proliferation"
+      ],
+      a: 0,
+      trQ: "ما هي حالة كريات الدم البيضاء والصفائح الدموية في أنيميا نقص الحديد غير المعقدة؟",
+      trO: [
+        "كريات الدم البيضاء طبيعية وغالباً ما تزداد الصفائح الدموية مع مورفولوجيا طبيعية",
+        "كلاهما غائب",
+        "تنخفض كريات الدم البيضاء بشدة",
+        "كلاهما يظهر تكاثراً هائلاً"
+      ]
+    },
+    {
+      q: "What causes the characteristic facial deformities in patients with severe untreated Beta-Thalassemia Major?",
+      o: [
+        "Frequent skin infections",
+        "Bone marrow expansion due to marked erythroid hyperplasia",
+        "Direct trauma during birth",
+        "Lack of calcium"
+      ],
+      a: 1,
+      trQ: "ما الذي يسبب تشوهات الوجه المميزة لدى المرضى المصابين بالثلاسيميا الكبرى غير المعالجة؟",
+      trO: [
+        "التهابات الجلد المتكررة",
+        "تمدد نخاع العظم بسبب فرط تنسج الكريات الحمراء",
+        "صدمة مباشرة أثناء الولادة",
+        "نقص الكالسيوم"
+      ]
+    },
+    {
+      q: "What specific cell type is commonly seen on the peripheral blood smear in Beta-Thalassemia besides microcytosis?",
+      o: [
+        "Target cells",
+        "Sickle cells",
+        "Smudge cells",
+        "Leukemic blast cells"
+      ],
+      a: 0,
+      trQ: "ما هي نوع الخلية الشائع رؤيتها على مسحة الدم المحيطي في الثلاسيميا إلى جانب صغر الخلايا؟",
+      trO: [
+        "الخلايا المستهدفة",
+        "الخلايا المنجلية",
+        "خلايا لطخة",
+        "خلايا الأرومة"
+      ]
+    },
+    {
+      q: "When is hemoglobin electrophoresis typically performed to diagnose thalassemia in infants?",
+      o: [
+        "During the first week",
+        "After 6-12 months of age",
+        "Before birth via amniocentesis exclusively",
+        "At age 18 years"
+      ],
+      a: 1,
+      trQ: "متى يتم إجراء فصل الهيموجلوبين الكهربائي لتشخيص الثلاسيميا عند الرضع؟",
+      trO: [
+        "خلال الأسبوع الأول",
+        "بعد عمر 6-12 شهراً",
+        "قبل الولادة عبر السائل السلوي حصراً",
+        "في سن 18 عاماً"
+      ]
+    },
+    {
+      q: "Which of the following is included in treatment modalities for Beta-Thalassemia Major?",
+      o: [
+        "Chronic transfusion, iron chelation, and stem cell transplantation",
+        "Oral iron pills alone",
+        "Fluid restriction",
+        "Vitamin C supplements as sole cure"
+      ],
+      a: 0,
+      trQ: "أي مما يلي يُضمن ضمن طرق علاج الثلاسيميا الكبرى؟",
+      trO: [
+        "نقل الدم المزمن، استخلاص الحديد، وزرع خلايا نقي العظم",
+        "حبوب الحديد الفموية وحدها",
+        "تقييد السوائل",
+        "مكملات فيتامين C كعلاج وحيد"
+      ]
+    },
+    {
+      q: "What clinical features are typically associated with acute hemolytic episodes in G6PD deficiency?",
+      o: [
+        "Pallor, jaundice, hemoglobinuria, and cardiovascular compromise",
+        "Permanent skin pigmentation loss",
+        "Paralysis of limbs",
+        "Excessive hair growth"
+      ],
+      a: 0,
+      trQ: "ما هي الملامح السريرية المرتبطة بنوبات الانحلال الحاد في نقص G6PD؟",
+      trO: [
+        "الشحوب، اليرقان، بيلة هيموجلوبينية، وتدهور قلبي وعائي",
+        "فقدان التصبغ الدائم",
+        "شلل الأطراف",
+        "نمو مفرط للشعر"
+      ]
+    },
+    {
+      q: "Which laboratory index measures average weight of hemoglobin inside a single red blood cell?",
+      o: [
+        "MCH",
+        "MCV",
+        "RDW",
+        "Ferritin"
+      ],
+      a: 0,
+      trQ: "أي مؤشر مخبري يقيس متوسط وزن الهيموجلوبين داخل خلية دم حمراء واحدة؟",
+      trO: [
+        "الهيموجلوبين الكروي الوسطي (MCH)",
+        "الحجم الكروي الوسطي",
+        "عرض توزيع حجم الدم",
+        "الفريتين"
+      ]
+    },
+    {
+      q: "Which diagnostic evaluation step in history taking includes checking dietary habits and family history?",
+      o: [
+        "Detailed history",
+        "Surgical biopsy",
+        "Magnetic resonance imaging",
+        "Electrocardiogram"
+      ],
+      a: 0,
+      trQ: "أي خطوة تقييم تشخيصية في أخذ التاريخ المرضي تتضمن التحقق من العادات الغذائية والتاريخ العائلي؟",
+      trO: [
+        "التاريخ المرضي المفصل",
+        "خزعة جراحية",
+        "تصوير بالرنين المغناطيسي",
+        "تخطيط القلب"
+      ]
+    },
+    {
+      q: "What is a prominent finding during physical examination in patients with severe anemia?",
+      o: [
+        "Tachycardia and tachypnea",
+        "Absolute bradycardia",
+        "Severe skin dryness without pallor",
+        "Normal respiratory rate"
+      ],
+      a: 0,
+      trQ: "ما هي النتيجة البارزة أثناء الفحص السريري للمرضى الذين يعانون من أنيميا شديدة؟",
+      trO: [
+        "سرعة القلب وسرعة التنفس",
+        "بطء قلب مطلق",
+        "جفاف شديد للجلد بدون شحوب",
+        "معدل تنفس طبيعي"
+      ]
+    },
+    {
+      q: "What major factor leads to increased iron demand during infancy?",
+      o: [
+        "Rapid body growth",
+        "Decreased physical activity",
+        "Excessive sleep patterns",
+        "Cold environmental temperatures"
+      ],
+      a: 0,
+      trQ: "ما هو العامل الرئيسي الذي يؤدي إلى زيادة الطلب على الحديد خلال فترة الرضاعة؟",
+      trO: [
+        "النمو الجسمي السريع",
+        "انخفاض النشاط البدني",
+        "أنماط النوم المفرطة",
+        "درجات الحرارة البيئية الباردة"
+      ]
+    },
+    {
+      q: "Which condition presents with microcytic hypochromic anemia that does not respond to iron therapy?",
+      o: [
+        "Thalassemia minor",
+        "Acute blood loss anemia",
+        "Early iron deficiency",
+        "Vitamin B12 deficiency"
+      ],
+      a: 0,
+      trQ: "ما هي الحالة التي تظهر بفقر دم صغروي ناقص الصباغ لا يستجيب لعلاج الحديد؟",
+      trO: [
+        "الثلاسيميا الصغرى",
+        "فقر الدم الناتج عن نزيف حاد",
+        "نقص الحديد المبكر",
+        "نقص فيتامين B12"
+      ]
+    },
+    {
+      q: "What abnormality is detected in the peripheral blood film of a patient with hereditary spherocytosis?",
+      o: [
+        "Spherocytes",
+        "Macrocytes",
+        "Sickle cells",
+        "Target cells predominantly without spherocytes"
+      ],
+      a: 0,
+      trQ: "ما هو الشذوذ الذي يتم اكتشافه في مسحة الدم المحيطي لمريض يعاني من كروية الدم الوراثية؟",
+      trO: [
+        "الخلايا الكروية",
+        "الخلايا الكبيرة",
+        "الخلايا المنجلية",
+        "الخلايا المستهدفة بشكل طاغٍ بدون كروية"
+      ]
+    },
+    {
+      q: "What is the role of folic acid supplementation in patients with chronic hemolytic disorders?",
+      o: [
+        "To prevent folate deficiency due to increased erythropoiesis demand",
+        "To cure iron deficiency instantly",
+        "To lower blood pressure",
+        "To destroy abnormal platelets"
+      ],
+      a: 0,
+      trQ: "ما هو دور مكملات حمض الفوليك لدى المرضى الذين يعانون من اضطرابات انحلال الدم المزمنة؟",
+      trO: [
+        "منع نقص الفولات بسبب زيادة الطلب الناتج عن تكوين الكريات",
+        "علاج نقص الحديد فوراً",
+        "خفض ضغط الدم",
+        "تدمير الصفائح غير الطبيعية"
+      ]
+    },
+    {
+      q: "What is the primary genetic defect in beta-thalassemias?",
+      o: [
+        "Mutations in the globin gene",
+        "Complete deletion of all chromosomes",
+        "Excess vitamin absorption",
+        "Platelet membrane receptor failure"
+      ],
+      a: 0,
+      trQ: "ما هو الخلل الجيني الأساسي في الثلاسيميا بيتا؟",
+      trO: [
+        "طفرات في جين الجلوبين",
+        "حذف كامل لجميع الكروموسومات",
+        "امتصاص مفرط للفيتامينات",
+        "فشل مستقبلات غشاء الصفائح الدموية"
+      ]
+    },
+    {
+      q: "Which organ enlargement is commonly marked in Beta-Thalassemia Major?",
+      o: [
+        "Hepatosplenomegaly",
+        "Kidney enlargement only",
+        "Brain swelling",
+        "Pancreatic atrophy"
+      ],
+      a: 0,
+      trQ: "أي تضخم في الأعضاء يُعد بارزاً بشكل شائع في الثلاسيميا الكبرى؟",
+      trO: [
+        "تضخم الكبد والطحال",
+        "تضخم الكلى فقط",
+        "تورم الدماغ",
+        "ضمور البنكرياس"
+      ]
+    },
+    {
+      q: "What is the key prevention measure in G6PD deficiency management?",
+      o: [
+        "Avoiding triggers like fava beans and oxidant drugs",
+        "Consuming large amounts of fava beans",
+        "Regular iron injections",
+        "Avoiding sunlight exposure"
+      ],
+      a: 0,
+      trQ: "ما هو تدبير الوقاية الأساسي في إدارة نقص G6PD؟",
+      trO: [
+        "تجنب المحفزات مثل الفول والأدوية المؤكسدة",
+        "تناول كميات كبيرة من الفول",
+        "حقن الحديد المنتظمة",
+        "تجنب التعرض لأشعة الشمس"
+      ]
+    },
+    {
+      q: "What laboratory finding confirms G6PD deficiency?",
+      o: [
+        "Reduced enzyme levels in red blood cells",
+        "Elevated plasma glucose",
+        "High white blood cell count",
+        "Normal red blood cell count"
+      ],
+      a: 0,
+      trQ: "ما هي النتيجة المخبرية التي تؤكد نقص G6PD؟",
+      trO: [
+        "انخفاض مستويات الإنزيم في كرات الدم الحمراء",
+        "ارتفاع جلوكوز البلازما",
+        "عداد خلايا دم بيضاء مرتفع",
+        "عداد كرات دم حمراء طبيعي"
+      ]
+    },
+    {
+      q: "What is the function of transferrin in iron metabolism?",
+      o: [
+        "Transporting iron in the plasma",
+        "Storing iron in the liver",
+        "Destroying excess red cells",
+        "Filtering iron in the kidneys"
+      ],
+      a: 0,
+      trQ: "ما هي وظيفة الترانسفيرين في استقلاب الحديد؟",
+      trO: [
+        "نقل الحديد في البلازما",
+        "تخزين الحديد في الكبد",
+        "تدمير الخلايا الحمراء الزائدة",
+        "ترشيح الحديد في الكلى"
+      ]
+    },
+    {
+      q: "What happens to transferrin saturation in iron deficiency anemia?",
+      o: [
+        "It decreases",
+        "It increases significantly",
+        "It stays constant",
+        "It reaches 100%"
+      ],
+      a: 0,
+      trQ: "ماذا يحدث لإشباع الترانسفيرين في أنيميا نقص الحديد؟",
+      trO: [
+        "ينخفض",
+        "يزداد بشكل ملحوظ",
+        "يبقى ثابتاً",
+        "يصل إلى 100%"
+      ]
+    },
+    {
+      q: "Which symptom is associated with severe chronic anemia affecting the tongue?",
+      o: [
+        "Atrophic glossitis",
+        "Macroglossia",
+        "Tongue paralysis",
+        "Hypertrophic papillae"
+      ],
+      a: 0,
+      trQ: "ما هو العرض المرتبط بالأنيميا المزمنة الشديدة التي تؤثر على اللسان؟",
+      trO: [
+        "التهاب اللسان الضموري",
+        "ضخامة اللسان",
+        "شلل اللسان",
+        "تضخم الحليمات"
+      ]
+    },
+    {
+      q: "What clinical manifestation can appear in severe iron deficiency involving mucous membranes and swallowing?",
+      o: [
+        "Dysphagia",
+        "Hypersalivation",
+        "Oral ulcers exclusively",
+        "Gingival bleeding"
+      ],
+      a: 0,
+      trQ: "ما هي المظاهر السريرية التي يمكن أن تظهر في نقص الحديد الشديد الذي يشارك الأغشية المخاطية والبلع؟",
+      trO: [
+        "عسر البلع (Dysphagia)",
+        "فرط اللعاب",
+        "قرح فموية حصراً",
+        "نزيف اللثة"
+      ]
+    },
+    {
+      q: "What is a common dietary history factor contributing to iron deficiency in toddlers?",
+      o: [
+        "Excessive unfortified cow milk intake",
+        "High intake of iron-rich meat",
+        "Exclusive consumption of vegetables",
+        "High water consumption"
+      ],
+      a: 0,
+      trQ: "ما هو عامل التاريخ الغذائي الشائع المسبب لنقص الحديد لدى الأطفال الصغار؟",
+      trO: [
+        "تناول حليب البقر غير المدعم بشكل مفرط",
+        "الاستهلاك العالي للحوم الغنية بالحديد",
+        "استهلاك الخضار حصراً",
+        "استهلاك الماء العالي"
+      ]
+    },
+    {
+      q: "What is the typical RDW value in iron deficiency anemia?",
+      o: [
+        "Elevated (anisocytosis)",
+        "Decreased below normal",
+        "Completely normal",
+        "Zero"
+      ],
+      a: 0,
+      trQ: "ما هي قيمة RDW النموذجية في أنيميا نقص الحديد؟",
+      trO: [
+        "مرتفعة (تباين حجم الخلايا)",
+        "منخفضة تحت الطبيعي",
+        "طبيعية تماماً",
+        "صفر"
+      ]
+    },
+    {
+      q: "Which test confirms iron deficiency when serum ferritin is low?",
+      o: [
+        "Bone marrow iron staining (absent iron stores)",
+        "Urinalysis",
+        "Chest X-ray",
+        "Blood glucose test"
+      ],
+      a: 0,
+      trQ: "أي اختبار يؤكد نقص الحديد عندما يكون فيريتين السيروم منخفضا؟",
+      trO: [
+        "صبغة حديد نخاع العظم (غیاب مخازن الحديد)",
+        "تحليل البول",
+        "أشعة الصدر",
+        "اختبار سكر الدم"
+      ]
+    },
+    {
+      q: "What is the main danger of untreated severe neonatal hyperbilirubinemia in spherocytosis?",
+      o: [
+        "Kernicterus (bilirubin encephalopathy)",
+        "Immediate bone fracture",
+        "Lung collapse",
+        "Renal failure"
+      ],
+      a: 0,
+      trQ: "ما هو الخطر الرئيسي لفرط بيليروبين الدم الوليدي الشديد غير المعالج في كروية الدم؟",
+      trO: [
+        "اليرقان النووي (اعتلال الدماغ البيليروبيني)",
+        "كسر العظام الفوري",
+        "انهيار الرئة",
+        "الفشل الكلوي"
+      ]
+    },
+    {
+      q: "Which of the following is a supportive treatment for hereditary spherocytosis crises?",
+      o: [
+        "Blood transfusion during aplastic or hemolytic crises",
+        "Daily high-dose iron pills",
+        "Insulin therapy",
+        "Antibiotic ointment only"
+      ],
+      a: 0,
+      trQ: "أي مما يلي يُعد علاجاً داعماً لنوبات كروية الدم الوراثية؟",
+      trO: [
+        "نقل الدم أثناء النوبات اللاتنسجية أو الانحلالية",
+        "حبوب الحديد بجرعات عالية يومياً",
+        "علاج الأنسولين",
+        "مرهم مضاد حيوي فقط"
+      ]
+    },
+    {
+      q: "What is the inheritance pattern of most thalassemias?",
+      o: [
+        "Autosomal recessive",
+        "X-linked dominant",
+        "Y-linked",
+        "Non-genetic acquired"
+      ],
+      a: 0,
+      trQ: "ما هو نمط الوراثة لمعظم أنواع الثلاسيميا؟",
+      trO: [
+        "جسمي متنحي",
+        "مرتبط بالكروموسوم X السائد",
+        "مرتبط بالكروموسوم Y",
+        "مكتسب غير وراثي"
+      ]
+    },
+    {
+      q: "What does hemoglobin electrophoresis show in Beta-Thalassemia Major?",
+      o: [
+        "Predominance of HbF with absent or low HbA",
+        "Normal HbA levels exclusively",
+        "Presence of HbS only",
+        "Zero hemoglobin fractions"
+      ],
+      a: 0,
+      trQ: "ماذا يظهر فصل الهيموجلوبين الكهربائي في الثلاسيميا الكبرى؟",
+      trO: [
+        "سيادة هيموجلوبين F مع غياب أو انخفاض هيموجلوبين A",
+        "مستويات هيموجلوبين A طبيعية حصراً",
+        "وجود هيموجلوبين S فقط",
+        "صفر أجزاء هيموجلوبين"
+      ]
+    },
+    {
+      q: "Why is iron chelation therapy necessary in patients receiving chronic blood transfusions?",
+      o: [
+        "To prevent secondary iron overload and organ damage",
+        "To increase red blood cell production",
+        "To cure G6PD deficiency",
+        "To lower white blood cell count"
+      ],
+      a: 0,
+      trQ: "لماذا يُعد علاج استخلاص الحديد (الخيليشن) ضرورياً للمرضى الذين يتلقون عمليات نقل دم مزمنة؟",
+      trO: [
+        "لمنع زيادة الحديد الثانوية وتلف الأعضاء",
+        "لزيادة إنتاج خلايا الدم الحمراء",
+        "لعلاج نقص G6PD",
+        "لخفض عدد خلايا الدم البيضاء"
+      ]
+    },
+    {
+      q: "What is the definitive cure for Beta-Thalassemia Major currently available?",
+      o: [
+        "Hematopoietic stem cell transplantation",
+        "Oral multivitamin pills",
+        "Daily fava bean consumption",
+        "Physical therapy"
+      ],
+      a: 0,
+      trQ: "ما هو العلاج النهائي المتاح حالياً لمرض الثلاسيميا الكبرى؟",
+      trO: [
+        "زرع خلايا الدم الجذعية المكونة للدم",
+        "حبوب الفيتامينات المتعددة الفموية",
+        "تناول الفول اليومي",
+        "العلاج الطبيعي"
+      ]
+    },
+    {
+      q: "What type of crisis can be triggered in G6PD deficiency by infections or oxidant drugs?",
+      o: [
+        "Acute hemolytic crisis",
+        "Hypertensive crisis",
+        "Hypoglycemic crisis",
+        "Addisonian crisis"
+      ],
+      a: 0,
+      trQ: "ما هي نوع النوبة التي يمكن تحفيزها في نقص G6PD بسبب العدوى أو الأدوية المؤكسدة؟",
+      trO: [
+        "نوبة انحلال الدم الحادة",
+        "نوبة ارتفاع ضغط الدم",
+        "نوبة نقص سكر الدم",
+        "نوبة أديسونية"
+      ]
+    },
+    {
+      q: "What color change in urine may be reported during acute hemolysis in G6PD deficiency?",
+      o: [
+        "Dark or cola-colored urine (hemoglobinuria)",
+        "Bright neon green",
+        "Milky white",
+        "Completely colorless"
+      ],
+      a: 0,
+      trQ: "ما هو تغير لون البول الذي قد يتم الإبلاغ عنه أثناء انحلال الدم الحاد في نقص G6PD؟",
+      trO: [
+        "بول داكن أو لون الكولا (بيلة هيموجلوبينية)",
+        "أخضر نيون لامع",
+        "أبيض حليبي",
+        "عديم اللون تماماً"
+      ]
+    },
+    {
+      q: "Which screening test can detect G6PD deficiency enzyme activity?",
+      o: [
+        "Fluorescent spot test or quantitative assay",
+        "Coomb's direct test",
+        "Osmotic fragility curve",
+        "Serum lipid profile"
+      ],
+      a: 0,
+      trQ: "أي اختبار فحص يمكنه اكتشاف نشاط إنزيم نقص G6PD؟",
+      trO: [
+        "اختبار البقعة الفلورية أو المقاييس الكمية",
+        "اختبار كومبس المباشر",
+        "منحنى الهشاشة الأسموزية",
+        "ملف دهون السيروم"
+      ]
+    },
+    {
+      q: "What is the typical MCV value range in microcytic anemia?",
+      o: [
+        "Below normal (low MCV)",
+        "Above normal (high MCV)",
+        "Strictly normal",
+        "Infinitely variable"
+      ],
+      a: 0,
+      trQ: "ما هو نطاق قيمة MCV النموذجية في فقر الدم صغروي الخلايا؟",
+      trO: [
+        "أقل من الطبيعي (MCV منخفض)",
+        "أعلى من الطبيعي (MCV مرتفع)",
+        "طبيعي تماماً",
+        "متغير بلا حدود"
+      ]
+    },
+    {
+      q: "Which of the following describes target cells often found in thalassemia?",
+      o: [
+        "RBCs with a central bullseye appearance of hemoglobin",
+        "RBCs shaped like crescent moons",
+        "RBCs that are perfectly spherical without central pallor",
+        "Fragmented red cell pieces"
+      ],
+      a: 0,
+      trQ: "أي مما يلي يصف الخلايا المستهدفة التي توجد غالباً في الثلاسيميا؟",
+      trO: [
+        "كريات دم حمراء ذات مظهر هدف مركزي للهيموجلوبين",
+        "كريات دم حمراء على شكل هلال",
+        "كريات دم حمراء كروية تماماً بدون شحوب مركزي",
+        "قطع كريات حمراء متفتتة"
+      ]
+    },
+    {
+      q: "What is the main mechanism of iron absorption in the human body?",
+      o: [
+        "Absorbed primarily in the duodenum and upper jejunum",
+        "Absorbed entirely in the stomach lining",
+        "Absorbed exclusively in the large intestine",
+        "Absorbed through the skin"
+      ],
+      a: 0,
+      trQ: "ما هي الآلية الرئيسية لامتصاص الحديد في جسم الإنسان؟",
+      trO: [
+        "يتم امتصاصه أساساً في الاثني عشر والصائم العلوي",
+        "يتم امتصاصه بالكامل في بطانة المعدة",
+        "يتم امتصاصه حصراً في الأمعاء الغليظة",
+        "يتم امتصاصه عبر الجلد"
+      ]
+    },
+    {
+      q: "Which dietary factor enhances non-heme iron absorption?",
+      o: [
+        "Vitamin C (Ascorbic acid)",
+        "Calcium supplements",
+        "High fiber bran",
+        "Tea and tannins"
+      ],
+      a: 0,
+      trQ: "ما هو العامل الغذائي الذي يعزز امتصاص الحديد غير الهيمي؟",
+      trO: [
+        "فيتامين C (حمض الاسكوربيك)",
+        "مكملات الكالسيوم",
+        "النخالة عالية الألياف",
+        "الشاي والتانينات"
+      ]
+    },
+    {
+      q: "What is pica in the context of iron deficiency symptoms?",
+      o: [
+        "Compulsive ingestion of non-food substances like ice or dirt",
+        "Extreme fear of eating meat",
+        "Inability to swallow liquids",
+        "Excessive craving for sweets"
+      ],
+      a: 0,
+      trQ: "ما هو مرض البيكا (Pica) في سياق أعراض نقص الحديد؟",
+      trO: [
+        "تناول قهري لمواد غير غذائية مثل الثلج أو الأتربة",
+        "خوف شديد من تناول اللحوم",
+        "عدم القدرة على بلع السوائل",
+        "رغبة مفرطة في تناول الحلويات"
+      ]
+    },
+    {
+      q: "What is koilonychia in severe iron deficiency?",
+      o: [
+        "Spoon-shaped brittle nails",
+        "Yellow discoloration of nails",
+        "Complete shedding of nails",
+        "Thickening of nail beds"
+      ],
+      a: 0,
+      trQ: "ما هو تقعر الأظافر (Koilonychia) في نقص الحديد الشديد؟",
+      trO: [
+        "أظافر هشّة على شكل ملعقة",
+        "تغير لون الأظافر للأصفر",
+        "تساقط كامل للأظافر",
+        "تثخن أسرة الأظافر"
+      ]
+    },
+    {
+      q: "What is the primary management for severe symptomatic anemia regardless of etiology?",
+      o: [
+        "Packed red blood cell transfusion",
+        "High dose oral Vitamin D",
+        "Immediate water restriction",
+        "Strict bed rest without medication"
+      ],
+      a: 0,
+      trQ: "ما هو التدبير الأساسي للأنيميا العرضية الشديدة بغض النظر عن المسبب؟",
+      trO: [
+        "نقل خلايا الدم الحمراء المركزة",
+        "فيتامين D بجرعات عالية",
+        "تقييد الماء الفوري",
+        "راحة سريرية تامة بدون أدوية"
+      ]
+    },
+
+    // --- True / False Questions (71 to 100) ---
+    {
+      q: "Anemia is defined as a decreased concentration of RBC mass and/or hemoglobin compared with age-matched controls.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تُعرف الأنيميا بأنها انخفاض في تركيز كتلة خلايا الدم الحمراء و/أو الهيموجلوبين مقارنة بالضوابط المتوافقة مع العمر.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "The normal lifespan of a mature red blood cell in human circulation is approximately 60 days.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "العمر الافتراضي الطبيعي لخلية الدم الحمراء الناضجة في الدورة الدموية البشرية هو تقريباً 60 يوماً.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Iron deficiency anemia is categorized under microcytic hypochromic anemias.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تُصنف أنيميا نقص الحديد تحت فقر الدم الصغروي ناقص الصباغ.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Infants aged between 6 to 24 months are at the highest risk period for developing iron deficiency anemia.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "الرضع الذين تتراوح أعمارهم بين 6 إلى 24 شهراً هم في فترة الخطورة القصوى لتطوير أنيميا نقص الحديد.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Pallor is considered one of the primary and most common physical examination symptoms of anemia.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يُعتبر الشحوب أحد الأعراض الأساسية والأكثر شيوعاً في الفحص السريري للأنيميا.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "In iron deficiency anemia, the total iron-binding capacity (TIBC) typically decreases below normal levels.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "في أنيميا نقص الحديد، تنخفض السعة الكلية الرابطة للحديد عادة إلى ما تحت المستويات الطبيعية.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Hereditary Spherocytosis is typically inherited in an autosomal dominant pattern.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تُورث كروية الدم الوراثية عادة بنمط سائد جسمي.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Splenectomy for severe Hereditary Spherocytosis should ideally be performed during the first few weeks of life.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "يجب إجراء استئصال الطحال لحالات كروية الدم الوراثية الشديدة خلال الأسابيع الأولى من الحياة.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Thalassemias are among the most common single-gene disorders on a worldwide basis.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تعتبر الثلاسيميا من أكثر الاضطرابات الجينية الأحادية شيوعاً على مستوى العالم.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Beta-thalassemia major presents with severe microcytic hypochromic anemia and marked hepatosplenomegaly.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تظهر الثلاسيميا الكبرى بفقر دم صغروي شديد ناقص الصباغ مع تضخم ملحوظ في الكبد والطحال.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Glucose-6-Phosphate Dehydrogenase deficiency is inherited as an autosomal dominant trait.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "يُورث نقص إنزيم G6PD كصفة سائدة جسمية.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Avoidance of oxidant drugs and fava beans is the most important management principle for G6PD deficiency.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تجنب الأدوية المؤكسدة والفول هو أهم مبدأ علاجي لنقص إنزيم G6PD.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Serum ferritin level is a reliable indicator to assess the status of body iron stores.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "مستوى فيريتين السيروم هو مؤشر موثوق لتقييم حالة مخزون الحديد في الجسم.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Osmotic fragility of red blood cells is typically increased in patients with Hereditary Spherocytosis.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "تكون الهشاشة الأسموزية لكرات الدم الحمراء مرتفعة عادة لدى المرضى الذين يعانون من كروية الدم الوراثية.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Oral iron therapy should be stopped immediately once hemoglobin values normalize, without waiting to replenish iron stores.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "يجب إيقاف علاج الحديد الفموي فوراً بمجرد عودة قيم الهيموجلوبين إلى وضعها الطبيعي، دون انتظار تجديد مخزون الحديد.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Detailed history taking in anemia evaluation includes checking dietary history, family history, and environmental exposures.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يشتمل أخذ التاريخ المرضي المفصل في تقييم الأنيميا على التحقق من التاريخ الغذائي، والتاريخ العائلي، والتعرضات البيئية.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Physical examination findings in severe anemia may include tachycardia, tachypnea, and orthostatic hypotension.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "قد تتضمن نتائج الفحص السريري في الأنيميا الشديدة سرعة القلب، وسرعة التنفس، وانخفاض ضغط الدم الانتصابي.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Splenomegaly and glossitis are never observed in severe cases of anemia.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "لا يُلاحظ تضخم الطحال والتهاب اللسان أبداً في الحالات الشديدة من الأنيميا.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Dietary deficiency, increased demand during growth, and impaired absorption are major known causes of iron deficiency anemia.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "النقص الغذائي، وزيادة الطلب أثناء النمو، ضعف الامتصاص هي أسباب رئيسية معروفة لأنيميا نقص الحديد.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Neonatal hyperbilirubinemia occurs in about 50% of children affected by Hereditary Spherocytosis.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يحدث فرط بيليروبين الدم الوليدي في حوالي 50% من الأطفال المصابين بكروية الدم الوراثية.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Thalassemia Minor responds rapidly and completely to oral iron therapy.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "تستجيب الثلاسيميا الصغرى بسرعة وكاملة لعلاج الحديد الفموي.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Bone marrow examination in thalassemia shows marked erythroid hyperplasia.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يظهر فحص نخاع العظم في الثلاسيميا فرط تنسج الكريات الحمراء الملحوظ.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "G6PD deficiency is inherited in an X-linked recessive manner.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يُورث نقص إنزيم G6PD بطريقة تنحي مرتبطة بالكروموسوم X.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "The reticulocyte count is typically elevated in patients with chronic hemolytic anemias.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "عادة ما تكون عداد الخلايا الشبكية مرتفعة لدى المرضى الذين يعانون من فقر الدم الانحلالي المزمن.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Splenectomy in Hereditary Spherocytosis results in significant clinical improvement of hemolysis.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "يؤدي استئصال الطحال في كروية الدم الوراثية إلى تحسن سريري كبير في الانحلال.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Serum iron levels are elevated above normal ranges in established iron deficiency anemia.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "مستويات حديد السيروم تكون مرتفعة فوق المعدلات الطبيعية في أنيميا نقص الحديد.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Target cells are characteristically found on peripheral blood smears of patients with thalassemias.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "توجد الخلايا المستهدفة بشكل مميز على مسحات الدم المحيطي للمرضى المصابين بالثلاسيميا.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Hemoglobin electrophoresis is diagnostic for thalassemia and should be performed after infancy.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "فصل الهيموجلوبين الكهربائي تشخيصي للثلاسيميا ويجب إجراؤه بعد فترة الرضاعة.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Pica is a well-known behavioral manifestation associated with iron deficiency.",
+      o: ["True", "False"],
+      a: 0,
+      trQ: "مرض بيكا هو مظهر سلوكي معروف مرتبط بنقص الحديد.",
+      trO: ["صحيح", "خطأ"]
+    },
+    {
+      q: "Vitamin C decreases the gastrointestinal absorption of non-heme iron.",
+      o: ["True", "False"],
+      a: 1,
+      trQ: "فيتامين C يقلل من امتصاص الجهاز الهضمي للحديد غير الهيمي.",
+      trO: ["صحيح", "خطأ"]
+    }
+  ]
+}; 
+
+const STORAGE_PREFIX = "theCodingNurse_pediatric_medicine_";
+let quiz = []; 
+let answers = []; 
+let i=0, score=0;
+let currentMode = null; 
+let timerInterval;
+let isReviewMode = false;
+
+let soundEnabled = true;
+let vibrationEnabled = true;
+let autoAdvanceTimeout;
+let audioCtx = null; 
+
+const qDiv=document.getElementById("question"),
+      oDiv=document.getElementById("options"),
+      progress=document.getElementById("progressBar"),
+      midNav=document.getElementById("midNav"),
+      quizContainer=document.getElementById("quizContainer"),
+      startCard=document.getElementById("startCard"),
+      resultCard=document.getElementById("resultCard"),
+      scoreText=document.getElementById("scoreText");
+
+function playAudioTone(type) {
+    if(!soundEnabled) return; 
+    try {
+        if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+        if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode); gainNode.connect(audioCtx.destination);
+        
+        if(type === 'correct') {
+            oscillator.frequency.setValueAtTime(523.25, audioCtx.currentTime); 
+            oscillator.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); 
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.25);
+        } else if(type === 'wrong') {
+            oscillator.type = 'sawtooth'; oscillator.frequency.setValueAtTime(140, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.35);
+        } else if(type === 'click') {
+            oscillator.frequency.setValueAtTime(380, audioCtx.currentTime); gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.06);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.06);
+        }
+    } catch(e) { console.log("Audio issue handled."); }
+}
+
+function triggerHaptic(type) {
+    if (!vibrationEnabled) return; 
+    if (navigator.vibrate) {
+        if (type === 'correct') navigator.vibrate(70);
+        else if (type === 'wrong') navigator.vibrate([100, 60, 100]);
+        else if (type === 'click') navigator.vibrate(35);
+    }
+}
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    document.getElementById("soundToggle").innerHTML = soundEnabled ? "<span>🔊</span> Sound On" : "<span>🔇</span> Sound Off";
+}
+
+function toggleVibration() {
+    vibrationEnabled = !vibrationEnabled;
+    document.getElementById("vibeToggle").innerHTML = vibrationEnabled ? "<span>📳</span> Vibe On" : "<span>📴</span> Vibe Off";
+}
+
+function setMode(mode) { currentMode = mode; showHighScore(); }
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', targetTheme);
+  document.querySelector('.theme-toggle').innerHTML = targetTheme === 'dark' ? '<span>☀️</span> Light Mode' : '<span>🌓</span> Dark Mode';
+}
+
+function prepareQuizData(shouldShuffle) {
+    quiz.forEach(q => {
+        q.combinedOptions = q.o.map((enText, idx) => ({
+            en: enText,
+            ar: q.trO && q.trO[idx] ? q.trO[idx] : ""
+        }));
+    });
+    
+    if(shouldShuffle) {
+        for (let currentIdx = quiz.length - 1; currentIdx > 0; currentIdx--) {
+            const randomIdx = Math.floor(Math.random() * (currentIdx + 1));
+            [quiz[currentIdx], quiz[randomIdx]] = [quiz[randomIdx], quiz[currentIdx]];
+        }
+        quiz.forEach(q => {
+            for (let j = q.combinedOptions.length - 1; j > 0; j--) {
+                const r = Math.floor(Math.random() * (j + 1));
+                [q.combinedOptions[j], q.combinedOptions[r]] = [q.combinedOptions[r], q.combinedOptions[j]];
+            }
+        });
+    }
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    let totalSeconds = quiz.length * 30; 
+    const timerDisplay = document.getElementById("timerDisplay");
+    document.getElementById("timerBox").style.display = "block";
+    
+    function refreshTimerView() {
+        let mins = Math.floor(totalSeconds / 60);
+        let secs = totalSeconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    refreshTimerView();
+    timerInterval = setInterval(() => {
+        totalSeconds--;
+        if(totalSeconds <= 0) { clearInterval(timerInterval); showResult(); } else { refreshTimerView(); }
+    }, 1000);
+}
+
+function getFlaggedTexts() { return JSON.parse(localStorage.getItem(STORAGE_PREFIX + "flagged_questions") || "[]"); }
+
+function speakQuestion() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); 
+        let structuredText = `Question number ${i + 1}: ${quiz[i].q}. `;
+        quiz[i].combinedOptions.forEach((opObj, idx) => { structuredText += `Choice number ${idx + 1}: ${opObj.en}. `; });
+        const utterance = new SpeechSynthesisUtterance(structuredText);
+        utterance.lang = 'en-US'; utterance.rate = 0.88;
+        utterance.onstart = () => {
+            const stopBtn = document.getElementById("stopSpeakBtn");
+            stopBtn.style.display = "inline-block"; stopBtn.innerHTML = "⏸️";
+        };
+        const resetAudioUI = () => { document.getElementById("stopSpeakBtn").style.display = "none"; };
+        utterance.onend = resetAudioUI; utterance.onerror = resetAudioUI;
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
+function toggleSpeechPause() {
+    if ('speechSynthesis' in window) {
+        const stopBtn = document.getElementById("stopSpeakBtn");
+        if (window.speechSynthesis.speaking) {
+            if (window.speechSynthesis.paused) { window.speechSynthesis.resume(); stopBtn.innerHTML = "⏸️"; } 
+            else { window.speechSynthesis.pause(); stopBtn.innerHTML = "▶️"; }
+        }
+    }
+}
+
+function forceStopSpeechEngine() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const stopBtn = document.getElementById("stopSpeakBtn");
+        if (stopBtn) stopBtn.style.display = "none";
+    }
+}
+
+function toggleTranslation() {
+    const tBox = document.getElementById("translationBox");
+    tBox.style.display = (tBox.style.display === "block") ? "none" : "block";
+}
+
+function startQuiz() {
+    if (!currentMode) {
+        alert("⚠️ من فضلك اختر وضع الاختبار أولاً!");
+        return;
+    }
+
+    let selectedBank = JSON.parse(JSON.stringify(datasets["place1"] || []));
+
+    if(selectedBank.length === 0) {
+        alert("لا توجد أسئلة مضافة في مصفوفة الأسئلة بعد!");
+        return;
+    }
+
+    if (currentMode === 'bookmark') {
+        let flagged = getFlaggedTexts();
+        quiz = selectedBank.filter(q => flagged.includes(q.q));
+        if (quiz.length === 0) {
+            alert("❌ لا توجد أسئلة مميزة بـ 🔖 حالياً!");
+            return;
+        }
+        prepareQuizData(false);
+        localStorage.removeItem(STORAGE_PREFIX + "quiz_progress");
+    } else if(!isReviewMode) {
+        quiz = selectedBank;
+        let doShuffle = (currentMode !== 'sequential' && currentMode !== 'memorize');
+        prepareQuizData(doShuffle); 
+        localStorage.removeItem(STORAGE_PREFIX + "quiz_progress"); 
+    }
+    answers = new Array(quiz.length).fill(null);
+    
+    midNav.innerHTML = "";
+    quiz.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.textContent = idx + 1; b.className = "q-btn";
+      b.onclick = () => { i = idx; load(); };
+      midNav.appendChild(b);
+    });
+
+    startCard.style.display = "none"; quizContainer.style.display = "block";
+    if(currentMode === 'exam') { startTimer(); } else { document.getElementById("timerBox").style.display = "none"; }
+    load();
+}
+
+function updateMidNav(){
+  let flagged = getFlaggedTexts();
+  document.querySelectorAll(".q-btn").forEach((el,idx)=>{
+    el.classList.remove("active","correct","wrong","answered-exam","flagged");
+    if(idx===i) el.classList.add("active");
+    if(quiz[idx] && flagged.includes(quiz[idx].q)) el.classList.add("flagged");
+    
+    if(quiz[idx] && quiz[idx].userPick !== undefined) {
+        if(currentMode === 'exam') { 
+            el.classList.add("answered-exam"); 
+        } else {
+            if(answers[idx]===true) el.classList.add("correct");
+            if(answers[idx]===false) el.classList.add("wrong");
+        }
+    }
+  });
+}
+
+function toggleFlag() {
+    if(quiz[i]) {
+        let flagged = getFlaggedTexts();
+        const qText = quiz[i].q;
+        if(flagged.includes(qText)) {
+            flagged = flagged.filter(t => t !== qText); quiz[i].isFlagged = false;
+        } else {
+            flagged.push(qText); quiz[i].isFlagged = true;
+        }
+        localStorage.setItem(STORAGE_PREFIX + "flagged_questions", JSON.stringify(flagged));
+        document.getElementById("flagBtn").classList.toggle("active", quiz[i].isFlagged);
+        updateMidNav(); saveProgress();
+    }
+}
+
+function load(){
+  if(quiz.length === 0) return;
+  clearTimeout(autoAdvanceTimeout); forceStopSpeechEngine(); 
+  document.getElementById("translationBox").style.display = "none";
+
+  const qCard = document.getElementById("quizCard");
+  qCard.style.animation = 'none'; qCard.offsetHeight; 
+  qCard.style.animation = 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+  let qText = quiz[i].q;
+  if (currentMode === 'memorize' && quiz[i].kw) {
+      const safeKw = quiz[i].kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(${safeKw})`, 'gi');
+      qText = qText.replace(regex, `<span class="kw-highlight">$1</span>`);
+  }
+  
+  qDiv.innerHTML = qText;
+  document.getElementById("qIndexBadge").textContent = `Q: ${i + 1} / ${quiz.length}`;
+  
+  const correctIdx = quiz[i].combinedOptions.findIndex(opt => opt.en === quiz[i].o[quiz[i].a]);
+  const transBtn = document.getElementById("translateBtn");
+  
+  if(quiz[i].trQ) {
+      transBtn.style.display = "inline-block";
+      document.getElementById("transQText").textContent = quiz[i].trQ;
+      const transOList = document.getElementById("transOList"); transOList.innerHTML = "";
+      quiz[i].combinedOptions.forEach(optObj => {
+          if(optObj.ar) { const li = document.createElement("li"); li.textContent = optObj.ar; transOList.appendChild(li); }
+      });
+  } else { transBtn.style.display = "none"; }
+  
+  let flagged = getFlaggedTexts();
+  quiz[i].isFlagged = flagged.includes(quiz[i].q);
+  document.getElementById("flagBtn").classList.toggle("active", !!quiz[i].isFlagged);
+  
+  oDiv.innerHTML=""; progress.style.width=((i+1)/quiz.length)*100+"%"; updateMidNav();
+  
+  quiz[i].combinedOptions.forEach((opObj,idx)=>{
+    const b = document.createElement("button"); b.textContent = opObj.en;
+    
+    if (currentMode === 'memorize' && quiz[i].userPick === undefined) {
+        if (idx === correctIdx) { b.classList.add("correct"); b.style.borderWidth = "3px"; } 
+        else { b.style.opacity = "0.4"; b.disabled = true; }
+    }
+    if(quiz[i].userPick !== undefined) {
+        b.disabled=true;
+        if(currentMode === 'study' || currentMode === 'sequential' || currentMode === 'bookmark' || currentMode === 'memorize') {
+            if(idx===correctIdx) b.classList.add("correct");
+            else if(idx === quiz[i].userPick) b.classList.add("wrong");
+        } else { if(idx === quiz[i].userPick) b.classList.add("selected-exam"); }
+    }
+    b.onclick=()=>answer(idx,b); oDiv.appendChild(b);
+  });
+}
+
+function answer(idx,btn){
+  if(quiz[i].userPick !== undefined) return;
+  quiz[i].userPick = idx;
+  document.querySelectorAll(".options button").forEach(b=>b.disabled=true);
+  const correctIdx = quiz[i].combinedOptions.findIndex(opt => opt.en === quiz[i].o[quiz[i].a]);
+  
+  if(currentMode === 'study' || currentMode === 'sequential' || currentMode === 'bookmark' || currentMode === 'memorize') {
+      if(idx===correctIdx){
+        btn.classList.add("correct"); answers[i]=true; score++;
+        playAudioTone('correct'); triggerHaptic('correct');
+        autoAdvanceTimeout = setTimeout(() => { nextQ(); }, 1200); 
+      }else{
+        btn.classList.add("wrong"); btn.classList.add("shake-anim"); 
+        oDiv.children[correctIdx].classList.add("correct"); answers[i]=false;
+        playAudioTone('wrong'); triggerHaptic('wrong');
+      }
+  } else { btn.classList.add("selected-exam"); playAudioTone('click'); triggerHaptic('click'); }
+  updateMidNav(); saveProgress();
+}
+
+function nextQ(){ if(i<quiz.length-1){i++;load()} else showResult(); }
+function prevQ(){ if(i>0){i--;load()} }
+
+function goToHome() {
+    clearInterval(timerInterval); forceStopSpeechEngine(); saveProgress(); 
+    quizContainer.style.display = "none"; startCard.style.display = "block";
+    isReviewMode = false;
+    checkSavedProgress();
+    showHighScore();
+}
+
+function saveProgress() {
+    if(isReviewMode) return; 
+    const dataToSave = { quiz: quiz, answers: answers, i: i, score: score, currentMode: currentMode };
+    localStorage.setItem(STORAGE_PREFIX + "quiz_progress", JSON.stringify(dataToSave));
+}
+
+function checkSavedProgress() {
+    if(localStorage.getItem(STORAGE_PREFIX + "quiz_progress")) { document.getElementById("resumeBtn").style.display = "block"; } 
+    else { document.getElementById("resumeBtn").style.display = "none"; }
+}
+
+function showHighScore() {
+    if (!currentMode) {
+        document.getElementById("highScoreView").style.display = "none";
+        return;
+    }
+    let modeKey = STORAGE_PREFIX + "high_score_" + currentMode;
+    let highScore = localStorage.getItem(modeKey);
+    const hsView = document.getElementById("highScoreView");
+    if(highScore !== null) {
+        let modeName = "";
+        if(currentMode === 'sequential') modeName = "(الترتيب)";
+        else if(currentMode === 'study') modeName = "(المذاكرة)";
+        else if(currentMode === 'exam') modeName = "(الامتحان)";
+        else if(currentMode === 'bookmark') modeName = "(المميزة)";
+        else if(currentMode === 'memorize') modeName = "(البصمجة)";
+        
+        document.getElementById("highScoreVal").textContent = highScore + "% " + modeName;
+        hsView.style.display = "block";
+    } else { hsView.style.display = "none"; }
+}
+
+function resumeQuiz() {
+    const savedData = localStorage.getItem(STORAGE_PREFIX + "quiz_progress");
+    if(!savedData) return;
+    const parsedData = JSON.parse(savedData);
+    quiz = parsedData.quiz; answers = parsedData.answers; i = parsedData.i; score = parsedData.score; currentMode = parsedData.currentMode;
+
+    document.querySelectorAll('input[name="quizMode"]').forEach(radio => { if(radio.value === currentMode) radio.checked = true; });
+    
+    midNav.innerHTML = "";
+    quiz.forEach((_, idx) => {
+      const b = document.createElement("button"); b.textContent = idx + 1; b.className = "q-btn";
+      b.onclick = () => { i = idx; load(); }; midNav.appendChild(b);
+    });
+    startCard.style.display = "none"; quizContainer.style.display = "block";
+    if(currentMode === 'exam') { startTimer(); } else { document.getElementById("timerBox").style.display = "none"; }
+    load();
+}
+
+function showResult(){
+  clearInterval(timerInterval); forceStopSpeechEngine();
+  localStorage.removeItem(STORAGE_PREFIX + "quiz_progress"); 
+  document.getElementById("timerBox").style.display = "none";
+  quizContainer.style.display="none"; resultCard.style.display="block";
+  
+  if(currentMode === 'exam') {
+      score = 0;
+      quiz.forEach((q) => { 
+          const correctIdx = q.combinedOptions.findIndex(opt => opt.en === q.o[q.a]);
+          if(q.userPick === correctIdx) score++; 
+      });
+  }
+  const wrongCount = quiz.length - score;
+  const accuracyRatio = Math.round((score / quiz.length) * 100);
+  
+  if (!isReviewMode) {
+      let modeKey = STORAGE_PREFIX + "high_score_" + currentMode;
+      let savedHighScore = parseInt(localStorage.getItem(modeKey)) || 0;
+      if(!isNaN(accuracyRatio) && accuracyRatio > savedHighScore) { localStorage.setItem(modeKey, accuracyRatio); }
+  }
+  
+  document.getElementById("statCorrect").textContent = score;
+  document.getElementById("statWrong").textContent = wrongCount;
+  document.getElementById("statRatio").textContent = isNaN(accuracyRatio) ? "0%" : accuracyRatio + "%";
+  scoreText.textContent=`${score} / ${quiz.length}`;
+  
+  const bTitle = document.getElementById("badgeTitle");
+  if(accuracyRatio >= 95) bTitle.textContent = "👑 Master of Pediatric Medicine";
+  else if(accuracyRatio >= 80) bTitle.textContent = "📚 Pediatric Medicine Hero";
+  else if(accuracyRatio >= 50) bTitle.textContent = "💡 Smart Doctor";
+  else bTitle.textContent = "💪 Keep Fighting, Future Doctor";
+  
+  document.getElementById("reviewBtn").style.display = wrongCount > 0 ? "inline-block" : "none";
+  if(score >= (quiz.length / 2) && quiz.length > 0) {
+    var duration = 3 * 1000; var end = Date.now() + duration;
+    (function frame() {
+      confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0, y: 0.7 } });
+      confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1, y: 0.7 } });
+      if (Date.now() < end) { requestAnimationFrame(frame); }
+    }());
+  }
+}
+
+function startReview() {
+    let wrongQuestions = quiz.filter(q => {
+        const correctIdx = q.combinedOptions.findIndex(opt => opt.en === q.o[q.a]);
+        return q.userPick !== correctIdx;
+    });
+    if(wrongQuestions.length === 0) return;
+    quiz = JSON.parse(JSON.stringify(wrongQuestions));
+    quiz.forEach(q => { delete q.userPick; delete q.isFlagged; }); 
+    isReviewMode = true; i = 0; score = 0; currentMode = 'study';
+    prepareQuizData(false); resultCard.style.display = "none"; startQuiz();
+}
+
+function downloadResultCard() {
+    const dBtn = document.getElementById("downloadBtn");
+    const containerActionButtons = document.querySelector(".result-actions-container");
+    dBtn.textContent = "⏳ Generating Image..."; dBtn.disabled = true;
+    containerActionButtons.style.display = "none"; 
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const bgColor = currentTheme === 'dark' ? '#0f172a' : '#f1f5f9';
+    
+    html2canvas(document.querySelector(".container"), {
+        backgroundColor: bgColor, scale: 2, useCORS: true, allowTaint: true,
+        onclone: (clonedDoc) => { clonedDoc.documentElement.setAttribute('data-theme', currentTheme); }
+    }).then(canvas => {
+        const downloadLink = document.createElement("a"); downloadLink.download = `TheCodingNurse_PediatricMedicine_Score.png`;
+        downloadLink.href = canvas.toDataURL("image/png"); downloadLink.click();
+        containerActionButtons.style.display = "flex"; dBtn.textContent = "📸 تحميل النتيجة كصورة"; dBtn.disabled = false;
+    }).catch(err => {
+        containerActionButtons.style.display = "flex"; dBtn.textContent = "📸 تحميل النتيجة كصورة"; dBtn.disabled = false;
+    });
+}
+
+function restartQuiz(){
+  i=0; score=0; isReviewMode = false; clearInterval(timerInterval); forceStopSpeechEngine();
+  localStorage.removeItem(STORAGE_PREFIX + "quiz_progress");
+  document.getElementById("resumeBtn").style.display = "none";
+  resultCard.style.display="none"; startCard.style.display="block";
+  checkSavedProgress();
+  showHighScore();
+}
+
+window.onload = function() { 
+    checkSavedProgress();
+};
+</script>
+</body>
+</html>

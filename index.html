@@ -504,7 +504,6 @@ body{margin:0; background:var(--bg); color:var(--text)}
 <script>
 const datasets = {
   "place1": [
-    // --- MCQs (1 to 70) ---
     {
       q: "What is the standard definition of anemia in infants and children?",
       o: [
@@ -662,7 +661,7 @@ const datasets = {
       q: "What is the recommended dose of elemental iron for treating iron deficiency anemia in children?",
       o: [
         "1 mg/kg/day",
-        "3 to 6 mg/kg/day",
+        "6 mg/kg/day",
         "15 to 20 mg/kg/day",
         "50 mg/kg/day"
       ],
@@ -670,7 +669,7 @@ const datasets = {
       trQ: "ما هي الجرعة الموصى بها من الحديد العنصري لعلاج أنيميا نقص الحديد عند الأطفال؟",
       trO: [
         "1 ملغ / كغ / يوم",
-        "3 إلى 6 ملغ / كغ / يوم",
+        "6 ملغ / كغ / يوم",
         "15 إلى 20 ملغ / كغ / يوم",
         "50 ملغ / كغ / يوم"
       ]
@@ -778,20 +777,20 @@ const datasets = {
       ]
     },
     {
-      q: "What are the thalassemia disorders considered on a worldwide basis?",
-      o: [
-        "The rarest genetic disorders",
-        "The most common single-gene disorders worldwide",
-        "Autoimmune non-genetic conditions",
-        "Infectious bacterial diseases"
-      ],
-      a: 1,
-      trQ: "ما هو التصنيف العالمي لاضطرابات الثلاسيميا على نطاق واسع؟",
-      trO: [
-        "أندر الاضطرابات الوراثية",
-        "الاضطرابات الجينية الأحادية الأكثر شيوعاً في جميع أنحاء العالم",
-        "حالات مناعية ذاتية غير وراثية",
-        "أراض بكتيرية معدية"
+  q: "What are the thalassemia disorders considered on a worldwide basis?",
+  o: [
+    "The rarest genetic conditions",
+    "The most common genetic disorders on a worldwide basis",
+    "Autoimmune non-genetic diseases",
+    "Acquired bacterial infections"
+  ],
+  a: 1,
+  trQ: "ما هو التصنيف العالمي لاضطرابات الثلاسيميا على نطاق واسع؟",
+  trO: [
+    "أندر الحالات الوراثية",
+    "الاضطرابات الوراثية الأكثر شيوعاً على مستوى العالم",
+      "أمراض مناعية ذاتية غير وراثية",
+      "عدوى بكتيرية مكتسبة"
       ]
     },
     {
@@ -1016,23 +1015,6 @@ const datasets = {
       ]
     },
     {
-      q: "In Beta-Thalassemia major, what specific hemoglobin fraction is typically elevated on electrophoresis after infancy?",
-      o: [
-        "Hemoglobin A",
-        "Hemoglobin F and A2",
-        "Hemoglobin H exclusively",
-        "Hemoglobin Bart's"
-      ],
-      a: 1,
-      trQ: "في الثلاسيميا الكبرى، ما هو جزء الهيموجلوبين المحدد الذي يرتفع عادة في الفصل الكهربائي بعد الرضاعة؟",
-      trO: [
-        "هيموجلوبين A",
-        "هيموجلوبين F و A2",
-        "هيموجلوبين H حصراً",
-        "هيموجلوبين بارت"
-      ]
-    },
-    {
       q: "Which specific cell shape is characteristically seen on the peripheral blood smear of Hereditary Spherocytosis?",
       o: [
         "Target cells",
@@ -1200,23 +1182,6 @@ const datasets = {
         "كلاهما غائب",
         "تنخفض كريات الدم البيضاء بشدة",
         "كلاهما يظهر تكاثراً هائلاً"
-      ]
-    },
-    {
-      q: "What causes the characteristic facial deformities in patients with severe untreated Beta-Thalassemia Major?",
-      o: [
-        "Frequent skin infections",
-        "Bone marrow expansion due to marked erythroid hyperplasia",
-        "Direct trauma during birth",
-        "Lack of calcium"
-      ],
-      a: 1,
-      trQ: "ما الذي يسبب تشوهات الوجه المميزة لدى المرضى المصابين بالثلاسيميا الكبرى غير المعالجة؟",
-      trO: [
-        "التهابات الجلد المتكررة",
-        "تمدد نخاع العظم بسبب فرط تنسج الكريات الحمراء",
-        "صدمة مباشرة أثناء الولادة",
-        "نقص الكالسيوم"
       ]
     },
     {
@@ -1458,23 +1423,6 @@ const datasets = {
       ]
     },
     {
-      q: "What laboratory finding confirms G6PD deficiency?",
-      o: [
-        "Reduced enzyme levels in red blood cells",
-        "Elevated plasma glucose",
-        "High white blood cell count",
-        "Normal red blood cell count"
-      ],
-      a: 0,
-      trQ: "ما هي النتيجة المخبرية التي تؤكد نقص G6PD؟",
-      trO: [
-        "انخفاض مستويات الإنزيم في كرات الدم الحمراء",
-        "ارتفاع جلوكوز البلازما",
-        "عداد خلايا دم بيضاء مرتفع",
-        "عداد كرات دم حمراء طبيعي"
-      ]
-    },
-    {
       q: "What is the function of transferrin in iron metabolism?",
       o: [
         "Transporting iron in the plasma",
@@ -1628,57 +1576,6 @@ const datasets = {
       ]
     },
     {
-      q: "What is the inheritance pattern of most thalassemias?",
-      o: [
-        "Autosomal recessive",
-        "X-linked dominant",
-        "Y-linked",
-        "Non-genetic acquired"
-      ],
-      a: 0,
-      trQ: "ما هو نمط الوراثة لمعظم أنواع الثلاسيميا؟",
-      trO: [
-        "جسمي متنحي",
-        "مرتبط بالكروموسوم X السائد",
-        "مرتبط بالكروموسوم Y",
-        "مكتسب غير وراثي"
-      ]
-    },
-    {
-      q: "What does hemoglobin electrophoresis show in Beta-Thalassemia Major?",
-      o: [
-        "Predominance of HbF with absent or low HbA",
-        "Normal HbA levels exclusively",
-        "Presence of HbS only",
-        "Zero hemoglobin fractions"
-      ],
-      a: 0,
-      trQ: "ماذا يظهر فصل الهيموجلوبين الكهربائي في الثلاسيميا الكبرى؟",
-      trO: [
-        "سيادة هيموجلوبين F مع غياب أو انخفاض هيموجلوبين A",
-        "مستويات هيموجلوبين A طبيعية حصراً",
-        "وجود هيموجلوبين S فقط",
-        "صفر أجزاء هيموجلوبين"
-      ]
-    },
-    {
-      q: "Why is iron chelation therapy necessary in patients receiving chronic blood transfusions?",
-      o: [
-        "To prevent secondary iron overload and organ damage",
-        "To increase red blood cell production",
-        "To cure G6PD deficiency",
-        "To lower white blood cell count"
-      ],
-      a: 0,
-      trQ: "لماذا يُعد علاج استخلاص الحديد (الخيليشن) ضرورياً للمرضى الذين يتلقون عمليات نقل دم مزمنة؟",
-      trO: [
-        "لمنع زيادة الحديد الثانوية وتلف الأعضاء",
-        "لزيادة إنتاج خلايا الدم الحمراء",
-        "لعلاج نقص G6PD",
-        "لخفض عدد خلايا الدم البيضاء"
-      ]
-    },
-    {
       q: "What is the definitive cure for Beta-Thalassemia Major currently available?",
       o: [
         "Hematopoietic stem cell transplantation",
@@ -1710,40 +1607,6 @@ const datasets = {
         "نوبة ارتفاع ضغط الدم",
         "نوبة نقص سكر الدم",
         "نوبة أديسونية"
-      ]
-    },
-    {
-      q: "What color change in urine may be reported during acute hemolysis in G6PD deficiency?",
-      o: [
-        "Dark or cola-colored urine (hemoglobinuria)",
-        "Bright neon green",
-        "Milky white",
-        "Completely colorless"
-      ],
-      a: 0,
-      trQ: "ما هو تغير لون البول الذي قد يتم الإبلاغ عنه أثناء انحلال الدم الحاد في نقص G6PD؟",
-      trO: [
-        "بول داكن أو لون الكولا (بيلة هيموجلوبينية)",
-        "أخضر نيون لامع",
-        "أبيض حليبي",
-        "عديم اللون تماماً"
-      ]
-    },
-    {
-      q: "Which screening test can detect G6PD deficiency enzyme activity?",
-      o: [
-        "Fluorescent spot test or quantitative assay",
-        "Coomb's direct test",
-        "Osmotic fragility curve",
-        "Serum lipid profile"
-      ],
-      a: 0,
-      trQ: "أي اختبار فحص يمكنه اكتشاف نشاط إنزيم نقص G6PD؟",
-      trO: [
-        "اختبار البقعة الفلورية أو المقاييس الكمية",
-        "اختبار كومبس المباشر",
-        "منحنى الهشاشة الأسموزية",
-        "ملف دهون السيروم"
       ]
     },
     {
@@ -1781,23 +1644,6 @@ const datasets = {
       ]
     },
     {
-      q: "What is the main mechanism of iron absorption in the human body?",
-      o: [
-        "Absorbed primarily in the duodenum and upper jejunum",
-        "Absorbed entirely in the stomach lining",
-        "Absorbed exclusively in the large intestine",
-        "Absorbed through the skin"
-      ],
-      a: 0,
-      trQ: "ما هي الآلية الرئيسية لامتصاص الحديد في جسم الإنسان؟",
-      trO: [
-        "يتم امتصاصه أساساً في الاثني عشر والصائم العلوي",
-        "يتم امتصاصه بالكامل في بطانة المعدة",
-        "يتم امتصاصه حصراً في الأمعاء الغليظة",
-        "يتم امتصاصه عبر الجلد"
-      ]
-    },
-    {
       q: "Which dietary factor enhances non-heme iron absorption?",
       o: [
         "Vitamin C (Ascorbic acid)",
@@ -1832,23 +1678,6 @@ const datasets = {
       ]
     },
     {
-      q: "What is koilonychia in severe iron deficiency?",
-      o: [
-        "Spoon-shaped brittle nails",
-        "Yellow discoloration of nails",
-        "Complete shedding of nails",
-        "Thickening of nail beds"
-      ],
-      a: 0,
-      trQ: "ما هو تقعر الأظافر (Koilonychia) في نقص الحديد الشديد؟",
-      trO: [
-        "أظافر هشّة على شكل ملعقة",
-        "تغير لون الأظافر للأصفر",
-        "تساقط كامل للأظافر",
-        "تثخن أسرة الأظافر"
-      ]
-    },
-    {
       q: "What is the primary management for severe symptomatic anemia regardless of etiology?",
       o: [
         "Packed red blood cell transfusion",
@@ -1865,8 +1694,6 @@ const datasets = {
         "راحة سريرية تامة بدون أدوية"
       ]
     },
-
-    // --- True / False Questions (71 to 100) ---
     {
       q: "Anemia is defined as a decreased concentration of RBC mass and/or hemoglobin compared with age-matched controls.",
       o: ["True", "False"],
